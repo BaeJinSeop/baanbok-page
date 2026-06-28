@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>이용약관 · baanbok</title>
+  <meta name="description" content="baanbok 이용약관 — 운동·식단 체크 앱 서비스 이용 조건 및 절차." />
+  <meta name="theme-color" content="#14B87A" />
+
+  <!-- Anti-FOUC: set theme before first paint (shared key with the app + landing) -->
+  <script>
+    (function () {
+      try {
+        var p = localStorage.getItem('baanbok-theme') || 'system';
+        var e = (p === 'light' || p === 'dark') ? p
+          : (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', e);
+      } catch (err) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .legal { width: 100%; max-width: 680px; margin: 0 auto; padding: 0 24px 80px; }
+    .legal-lead { font-size: 14px; font-weight: 500; color: var(--muted); line-height: 1.7; margin: 4px 0 8px; }
+    .legal h1 { font-size: 30px; font-weight: 800; letter-spacing: -1px; color: var(--ink); margin: 36px 0 8px; }
+    .legal .date { font-size: 13px; font-weight: 600; color: var(--muted); margin: 0 0 8px; }
+    .legal hr { border: none; border-top: 1px solid var(--line); margin: 28px 0; }
+    .legal h2 { font-size: 17px; font-weight: 800; letter-spacing: -.3px; color: var(--ink); margin: 32px 0 10px; }
+    .legal p { font-size: 14px; font-weight: 500; color: var(--muted); line-height: 1.75; margin: 0 0 12px; }
+    .legal ul { font-size: 14px; font-weight: 500; color: var(--muted); line-height: 1.7; padding-left: 20px; margin: 0 0 12px; }
+    .legal li { margin-bottom: 7px; }
+    .legal a.inline { color: var(--green); text-decoration: none; font-weight: 600; }
+    .legal a.inline:hover { text-decoration: underline; }
+    .legal .foot-note { font-size: 12px; font-weight: 500; color: var(--muted); opacity: .7; margin-top: 44px; }
+    .legal .back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--muted); text-decoration: none; margin-top: 40px; }
+    .legal .back:hover { color: var(--ink); }
+  </style>
+  <script src="app.js" defer></script>
+</head>
+<body>
+<div class="page">
+  <div class="column" style="overflow:visible;">
+
+    <!-- Nav (sticky) — matches landing -->
+    <div style="position:sticky; top:0; z-index:40; display:flex; align-items:center; justify-content:space-between; padding:16px 20px; background:var(--navBg); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--navBorder);">
+      <a href="index.html" style="display:flex; align-items:center; gap:9px; text-decoration:none;">
+        <div style="width:28px; height:28px; border-radius:9px; background:var(--green); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 11px -4px var(--green);">
+          <svg width="17" height="17" viewBox="0 0 120 120"><path d="M 41 92.9 A 38 38 0 1 1 79 92.9" fill="none" stroke="#fff" stroke-width="12.5" stroke-linecap="round"/><path d="M 39 73 L 53 95 L 84 58" fill="none" stroke="#fff" stroke-width="12.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span style="font-size:17px; font-weight:700; letter-spacing:-.6px; color:var(--ink);">baanbok</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="테마 전환" onclick="toggleTheme()" style="width:36px; height:36px; border-radius:11px; border:1px solid var(--line); background:var(--card); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--ink);">
+        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"/></svg>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+
+    <!-- Body -->
+    <div class="legal">
+      <h1>이용약관</h1>
+      <p class="date">시행일: 2026년 6월 28일</p>
+      <p class="legal-lead">Baanbok(이하 "서비스")을 이용해 주셔서 감사합니다. 본 약관은 서비스 이용에 관한 조건 및 절차를 규정합니다. 서비스를 이용하시면 본 약관에 동의한 것으로 간주합니다.</p>
+
+      <hr />
+
+      <h2>제1조 (목적)</h2>
+      <p>본 약관은 baanbok(이하 "운영자")이 제공하는 운동·식단 체크 앱 서비스(이하 "서비스")의 이용 조건 및 절차, 운영자와 이용자의 권리·의무·책임에 관한 사항을 규정함을 목적으로 합니다.</p>
+
+      <h2>제2조 (정의)</h2>
+      <ul>
+        <li>"서비스"란 운영자가 제공하는 baanbok 앱 및 관련 웹 서비스를 의미합니다.</li>
+        <li>"이용자"란 본 약관에 동의하고 서비스를 이용하는 자를 의미합니다.</li>
+        <li>"계정"이란 이용자가 서비스 이용을 위해 생성한 이메일 기반의 식별 정보를 의미합니다.</li>
+        <li>"Pro"란 광고 제거 등 부가 혜택이 제공되는 유료 이용 상태를 의미합니다.</li>
+      </ul>
+
+      <h2>제3조 (약관의 효력 및 변경)</h2>
+      <p>본 약관은 서비스를 이용하고자 하는 모든 이용자에게 적용됩니다. 운영자는 필요한 경우 약관을 변경할 수 있으며, 변경 시 앱 내 공지를 통해 사전 고지합니다. 변경된 약관은 고지 후 7일이 경과하면 효력이 발생합니다.</p>
+
+      <h2>제4조 (서비스 이용)</h2>
+      <p>서비스는 회원가입 후 이용 가능합니다.</p>
+      <ul>
+        <li>이용자는 하나의 계정만 보유함을 원칙으로 합니다.</li>
+        <li>계정 정보는 타인에게 양도하거나 대여할 수 없습니다.</li>
+        <li>본인 계정의 보안 관리는 이용자 본인의 책임입니다.</li>
+      </ul>
+
+      <h2>제5조 (서비스의 제공 및 변경)</h2>
+      <p>운영자는 서비스를 연중무휴 제공하는 것을 원칙으로 하되, 아래의 경우 서비스 제공을 일시 중단할 수 있습니다.</p>
+      <ul>
+        <li>서버 점검 및 업데이트</li>
+        <li>천재지변, 정전, 통신 장애 등 불가항력적 사유</li>
+        <li>서비스 운영상 기타 부득이한 사유</li>
+      </ul>
+      <p>운영자는 서비스의 내용·기능·UI를 사전 고지 없이 변경할 수 있습니다.</p>
+
+      <h2>제6조 (광고 및 유료 서비스)</h2>
+      <ul>
+        <li>서비스는 무료로 제공되며, 무료 이용자에게는 Google AdMob 광고가 표시될 수 있습니다.</li>
+        <li>Pro 결제 시 광고가 제거됩니다. 결제·환불은 Apple App Store 및 Google Play의 정책을 따릅니다.</li>
+        <li>유료 혜택의 구체적 범위는 앱 내 안내를 따르며, 운영자는 사전 고지 후 변경할 수 있습니다.</li>
+      </ul>
+
+      <h2>제7조 (이용자의 의무)</h2>
+      <p>이용자는 다음 행위를 하여서는 안 됩니다.</p>
+      <ul>
+        <li>서비스를 통해 타인의 개인정보를 수집·저장·공개하는 행위</li>
+        <li>서비스 시스템을 해킹하거나 악성 코드를 배포하는 행위</li>
+        <li>허위 정보를 입력하여 다른 이용자 또는 운영자를 기만하는 행위</li>
+        <li>관련 법령을 위반하는 행위</li>
+      </ul>
+
+      <h2>제8조 (서비스 이용 제한)</h2>
+      <p>운영자는 이용자가 본 약관을 위반하거나 서비스의 정상적인 운영을 방해하는 경우, 사전 통보 없이 이용을 제한하거나 계정을 삭제할 수 있습니다.</p>
+
+      <h2>제9조 (책임의 한계)</h2>
+      <p>서비스가 제공하는 운동·식단 기록, 추세 분석, 중량 진척 힌트 등은 참고용 정보이며, 의학적·영양학적 조언을 대체하지 않습니다. 이를 근거로 한 건강·운동상의 결정 및 그 결과에 대해 운영자는 책임을 지지 않습니다.</p>
+      <p>운영자는 서비스 중단, 데이터 손실 등으로 인한 손해에 대해 고의 또는 중과실이 없는 한 책임을 지지 않습니다.</p>
+
+      <h2>제10조 (지식재산권)</h2>
+      <p>서비스 내 모든 콘텐츠(텍스트, 이미지, UI 디자인, 아이콘 등)의 저작권은 운영자에게 귀속됩니다. 이용자는 서비스 콘텐츠를 무단으로 복제·배포·수정할 수 없습니다. 단, 이용자가 직접 입력한 운동·식단 기록 등의 데이터는 이용자에게 귀속됩니다.</p>
+
+      <h2>제11조 (개인정보 보호)</h2>
+      <p>운영자는 이용자의 개인정보를 관련 법령 및 <a class="inline" href="privacy.html">개인정보처리방침</a>에 따라 처리합니다.</p>
+
+      <h2>제12조 (분쟁해결 및 준거법)</h2>
+      <p>서비스 이용과 관련한 분쟁은 당사자 간 협의를 우선으로 합니다. 협의가 이루어지지 않을 경우 관련 법령에 따른 관할 법원에서 해결하며, 본 약관은 대한민국 법령을 준거법으로 합니다.</p>
+
+      <h2>제13조 (문의)</h2>
+      <p>서비스 이용과 관련한 문의: <a class="inline" href="mailto:poxy1535@gmail.com?subject=baanbok 문의">poxy1535@gmail.com</a></p>
+
+      <a class="back" href="index.html">← baanbok 홈으로</a>
+
+      <p class="foot-note">© 2026 baanbok · 매일은 0초로</p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
