@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-title-key="legal.privacyTitle">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -42,6 +42,7 @@
     .legal .back:hover { color: var(--ink); }
   </style>
   <script src="app.js" defer></script>
+  <script src="lang.js" defer></script>
 </head>
 <body>
 <div class="page">
@@ -55,78 +56,151 @@
         </div>
         <span style="font-size:17px; font-weight:700; letter-spacing:-.6px; color:var(--ink);">baanbok</span>
       </a>
-      <button class="nav-toggle" type="button" aria-label="테마 전환" onclick="toggleTheme()" style="width:36px; height:36px; border-radius:11px; border:1px solid var(--line); background:var(--card); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--ink);">
-        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"/></svg>
-        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      </button>
+      <div class="nav-actions">
+        <select class="lang-select" onchange="setLang(this.value)" aria-label="Language / 언어">
+          <option value="ko">한국어</option>
+          <option value="en">English</option>
+        </select>
+        <button class="nav-toggle" type="button" aria-label="테마 전환" onclick="toggleTheme()" style="width:36px; height:36px; border-radius:11px; border:1px solid var(--line); background:var(--card); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--ink);">
+          <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
     </div>
 
     <!-- Body -->
     <div class="legal">
-      <h1>개인정보처리방침</h1>
-      <p class="date">시행일: 2026년 6월 28일</p>
-      <p class="legal-lead">Baanbok(이하 "서비스")은 이용자의 개인정보를 소중히 다루며, 「개인정보 보호법」 및 관계 법령을 준수합니다. 아래와 같이 개인정보 처리방침을 둡니다.</p>
+      <!-- 한국어 -->
+      <div data-lang-block="ko">
+        <h1>개인정보처리방침</h1>
+        <p class="date">시행일: 2026년 6월 28일</p>
+        <p class="legal-lead">Baanbok(이하 "서비스")은 이용자의 개인정보를 소중히 다루며, 「개인정보 보호법」 및 관계 법령을 준수합니다. 아래와 같이 개인정보 처리방침을 둡니다.</p>
 
-      <hr />
+        <hr />
 
-      <h2>1. 수집하는 개인정보 항목</h2>
-      <ul>
-        <li>회원가입·로그인: 이메일 주소, 이름(닉네임), 비밀번호(암호화 저장)</li>
-        <li>서비스 이용: 운동·식단 기록, 체크 내역, 신체 측정값(체중·허리둘레·중량)</li>
-        <li>자동 수집: 광고 식별자, 앱 이용 중 발생하는 기기 정보</li>
-      </ul>
+        <h2>1. 수집하는 개인정보 항목</h2>
+        <ul>
+          <li>회원가입·로그인: 이메일 주소, 이름(닉네임), 비밀번호(암호화 저장)</li>
+          <li>서비스 이용: 운동·식단 기록, 체크 내역, 신체 측정값(체중·허리둘레·중량)</li>
+          <li>자동 수집: 광고 식별자, 앱 이용 중 발생하는 기기 정보</li>
+        </ul>
 
-      <h2>2. 개인정보의 수집·이용 목적</h2>
-      <ul>
-        <li>회원 식별 및 로그인 인증</li>
-        <li>운동·식단 체크 및 추세 기록 제공</li>
-        <li>서비스 운영·개선 및 문의 응대</li>
-        <li>무료 이용자 대상 광고 게재</li>
-      </ul>
+        <h2>2. 개인정보의 수집·이용 목적</h2>
+        <ul>
+          <li>회원 식별 및 로그인 인증</li>
+          <li>운동·식단 체크 및 추세 기록 제공</li>
+          <li>서비스 운영·개선 및 문의 응대</li>
+          <li>무료 이용자 대상 광고 게재</li>
+        </ul>
 
-      <h2>3. 보유 및 이용 기간</h2>
-      <ul>
-        <li>회원 탈퇴 시 모든 개인정보를 지체 없이 파기합니다.</li>
-        <li>관계 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관합니다.</li>
-      </ul>
+        <h2>3. 보유 및 이용 기간</h2>
+        <ul>
+          <li>회원 탈퇴 시 모든 개인정보를 지체 없이 파기합니다.</li>
+          <li>관계 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관합니다.</li>
+        </ul>
 
-      <h2>4. 개인정보의 파기</h2>
-      <p>회원 탈퇴(설정 → 회원 탈퇴) 요청 시, 계정과 모든 운동·식단 기록·측정값이 즉시 영구 삭제되며 복구할 수 없습니다.</p>
+        <h2>4. 개인정보의 파기</h2>
+        <p>회원 탈퇴(설정 → 회원 탈퇴) 요청 시, 계정과 모든 운동·식단 기록·측정값이 즉시 영구 삭제되며 복구할 수 없습니다.</p>
 
-      <h2>5. 제3자 제공 및 처리위탁</h2>
-      <p>서비스는 원칙적으로 개인정보를 외부에 제공하지 않으며, 다음 업무를 위탁합니다.</p>
-      <ul>
-        <li>Google AdMob(구글): 광고 게재 및 광고 식별자 처리</li>
-        <li>Amazon Web Services(AWS): 서버·데이터 호스팅</li>
-      </ul>
+        <h2>5. 제3자 제공 및 처리위탁</h2>
+        <p>서비스는 원칙적으로 개인정보를 외부에 제공하지 않으며, 다음 업무를 위탁합니다.</p>
+        <ul>
+          <li>Google AdMob(구글): 광고 게재 및 광고 식별자 처리</li>
+          <li>Amazon Web Services(AWS): 서버·데이터 호스팅</li>
+        </ul>
 
-      <h2>6. 광고 및 광고 식별자</h2>
-      <ul>
-        <li>무료 이용자에게 Google AdMob 광고가 표시되며, 맞춤형 광고를 위해 광고 식별자가 사용될 수 있습니다.</li>
-        <li>기기 설정에서 광고 추적을 제한할 수 있습니다.</li>
-        <li>Pro 이용자에게는 광고가 표시되지 않습니다.</li>
-      </ul>
+        <h2>6. 광고 및 광고 식별자</h2>
+        <ul>
+          <li>무료 이용자에게 Google AdMob 광고가 표시되며, 맞춤형 광고를 위해 광고 식별자가 사용될 수 있습니다.</li>
+          <li>기기 설정에서 광고 추적을 제한할 수 있습니다.</li>
+          <li>Pro 이용자에게는 광고가 표시되지 않습니다.</li>
+        </ul>
 
-      <h2>7. 이용자의 권리</h2>
-      <p>이용자는 언제든 자신의 개인정보를 열람·정정할 수 있으며, 회원 탈퇴를 통해 삭제를 요청할 수 있습니다.</p>
+        <h2>7. 이용자의 권리</h2>
+        <p>이용자는 언제든 자신의 개인정보를 열람·정정할 수 있으며, 회원 탈퇴를 통해 삭제를 요청할 수 있습니다.</p>
 
-      <h2>8. 개인정보의 안전성 확보 조치</h2>
-      <ul>
-        <li>비밀번호는 복호화 불가능한 방식(BCrypt)으로 암호화하여 저장합니다.</li>
-        <li>데이터 전송 구간은 HTTPS로 암호화합니다.</li>
-      </ul>
+        <h2>8. 개인정보의 안전성 확보 조치</h2>
+        <ul>
+          <li>비밀번호는 복호화 불가능한 방식(BCrypt)으로 암호화하여 저장합니다.</li>
+          <li>데이터 전송 구간은 HTTPS로 암호화합니다.</li>
+        </ul>
 
-      <h2>9. 개인정보 보호책임자 및 문의</h2>
-      <p>개인정보 관련 문의: <a class="inline" href="mailto:poxy1535@gmail.com?subject=baanbok 개인정보 문의">poxy1535@gmail.com</a></p>
+        <h2>9. 개인정보 보호책임자 및 문의</h2>
+        <p>개인정보 관련 문의: <a class="inline" href="mailto:poxy1535@gmail.com?subject=baanbok 개인정보 문의">poxy1535@gmail.com</a></p>
 
-      <h2>10. 고지 의무</h2>
-      <p>본 방침의 내용 변경 시 앱 내 공지를 통해 안내합니다.</p>
+        <h2>10. 고지 의무</h2>
+        <p>본 방침의 내용 변경 시 앱 내 공지를 통해 안내합니다.</p>
 
-      <p>관련 약관은 <a class="inline" href="terms.html">이용약관</a>을 참고해 주세요.</p>
+        <p>관련 약관은 <a class="inline" href="terms.html">이용약관</a>을 참고해 주세요.</p>
+      </div>
 
-      <a class="back" href="index.html">← baanbok 홈으로</a>
+      <!-- English -->
+      <div data-lang-block="en">
+        <h1>Privacy Policy</h1>
+        <p class="date">Effective: June 28, 2026</p>
+        <p class="legal-lead">Baanbok (the "Service") values your privacy and complies with applicable data-protection laws. This Privacy Policy is set out below.</p>
 
-      <p class="foot-note">© 2026 baanbok · 매일은 0초로</p>
+        <hr />
+
+        <h2>1. Personal data we collect</h2>
+        <ul>
+          <li>Sign-up / login: email address, name (nickname), password (stored encrypted)</li>
+          <li>Service use: workout & diet records, check history, body metrics (weight, waist, lifts)</li>
+          <li>Collected automatically: advertising identifier, device information generated during app use</li>
+        </ul>
+
+        <h2>2. Purpose of collection and use</h2>
+        <ul>
+          <li>Member identification and login authentication</li>
+          <li>Providing workout & diet checks and trend records</li>
+          <li>Operating and improving the service, and responding to inquiries</li>
+          <li>Serving ads to free users</li>
+        </ul>
+
+        <h2>3. Retention and use period</h2>
+        <ul>
+          <li>All personal data is destroyed without delay upon account deletion.</li>
+          <li>Where retention is required by law, data is kept for the period required.</li>
+        </ul>
+
+        <h2>4. Destruction of personal data</h2>
+        <p>When you delete your account (Settings → Delete account), your account and all workout, diet records and measurements are permanently deleted immediately and cannot be recovered.</p>
+
+        <h2>5. Third-party provision and processing entrustment</h2>
+        <p>As a rule, the Service does not provide personal data to outside parties. It entrusts the following tasks:</p>
+        <ul>
+          <li>Google AdMob (Google): ad delivery and advertising-identifier processing</li>
+          <li>Amazon Web Services (AWS): server and data hosting</li>
+        </ul>
+
+        <h2>6. Advertising and advertising identifier</h2>
+        <ul>
+          <li>Free users are shown Google AdMob ads, and an advertising identifier may be used for personalized ads.</li>
+          <li>You can limit ad tracking in your device settings.</li>
+          <li>Pro users are not shown ads.</li>
+        </ul>
+
+        <h2>7. Your rights</h2>
+        <p>You may view and correct your personal data at any time, and request deletion by deleting your account.</p>
+
+        <h2>8. Security measures</h2>
+        <ul>
+          <li>Passwords are stored encrypted with a one-way method (BCrypt).</li>
+          <li>Data in transit is encrypted with HTTPS.</li>
+        </ul>
+
+        <h2>9. Privacy officer and contact</h2>
+        <p>Privacy inquiries: <a class="inline" href="mailto:poxy1535@gmail.com?subject=baanbok privacy inquiry">poxy1535@gmail.com</a></p>
+
+        <h2>10. Notice obligation</h2>
+        <p>Any changes to this policy will be announced within the app.</p>
+
+        <p>For related terms, please see the <a class="inline" href="terms.html">Terms of Service</a>.</p>
+      </div>
+
+      <a class="back" data-i18n="legal.back" href="index.html">← baanbok 홈으로</a>
+
+      <p class="foot-note" data-i18n="foot.copy">© 2026 baanbok · 매일은 0초로</p>
     </div>
 
   </div>

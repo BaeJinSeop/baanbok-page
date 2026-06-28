@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-title-key="legal.termsTitle">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -42,6 +42,7 @@
     .legal .back:hover { color: var(--ink); }
   </style>
   <script src="app.js" defer></script>
+  <script src="lang.js" defer></script>
 </head>
 <body>
 <div class="page">
@@ -55,89 +56,173 @@
         </div>
         <span style="font-size:17px; font-weight:700; letter-spacing:-.6px; color:var(--ink);">baanbok</span>
       </a>
-      <button class="nav-toggle" type="button" aria-label="테마 전환" onclick="toggleTheme()" style="width:36px; height:36px; border-radius:11px; border:1px solid var(--line); background:var(--card); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--ink);">
-        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"/></svg>
-        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      </button>
+      <div class="nav-actions">
+        <select class="lang-select" onchange="setLang(this.value)" aria-label="Language / 언어">
+          <option value="ko">한국어</option>
+          <option value="en">English</option>
+        </select>
+        <button class="nav-toggle" type="button" aria-label="테마 전환" onclick="toggleTheme()" style="width:36px; height:36px; border-radius:11px; border:1px solid var(--line); background:var(--card); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--ink);">
+          <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
     </div>
 
     <!-- Body -->
     <div class="legal">
-      <h1>이용약관</h1>
-      <p class="date">시행일: 2026년 6월 28일</p>
-      <p class="legal-lead">Baanbok(이하 "서비스")을 이용해 주셔서 감사합니다. 본 약관은 서비스 이용에 관한 조건 및 절차를 규정합니다. 서비스를 이용하시면 본 약관에 동의한 것으로 간주합니다.</p>
+      <!-- 한국어 -->
+      <div data-lang-block="ko">
+        <h1>이용약관</h1>
+        <p class="date">시행일: 2026년 6월 28일</p>
+        <p class="legal-lead">Baanbok(이하 "서비스")을 이용해 주셔서 감사합니다. 본 약관은 서비스 이용에 관한 조건 및 절차를 규정합니다. 서비스를 이용하시면 본 약관에 동의한 것으로 간주합니다.</p>
 
-      <hr />
+        <hr />
 
-      <h2>제1조 (목적)</h2>
-      <p>본 약관은 baanbok(이하 "운영자")이 제공하는 운동·식단 체크 앱 서비스(이하 "서비스")의 이용 조건 및 절차, 운영자와 이용자의 권리·의무·책임에 관한 사항을 규정함을 목적으로 합니다.</p>
+        <h2>제1조 (목적)</h2>
+        <p>본 약관은 baanbok(이하 "운영자")이 제공하는 운동·식단 체크 앱 서비스(이하 "서비스")의 이용 조건 및 절차, 운영자와 이용자의 권리·의무·책임에 관한 사항을 규정함을 목적으로 합니다.</p>
 
-      <h2>제2조 (정의)</h2>
-      <ul>
-        <li>"서비스"란 운영자가 제공하는 baanbok 앱 및 관련 웹 서비스를 의미합니다.</li>
-        <li>"이용자"란 본 약관에 동의하고 서비스를 이용하는 자를 의미합니다.</li>
-        <li>"계정"이란 이용자가 서비스 이용을 위해 생성한 이메일 기반의 식별 정보를 의미합니다.</li>
-        <li>"Pro"란 광고 제거 등 부가 혜택이 제공되는 유료 이용 상태를 의미합니다.</li>
-      </ul>
+        <h2>제2조 (정의)</h2>
+        <ul>
+          <li>"서비스"란 운영자가 제공하는 baanbok 앱 및 관련 웹 서비스를 의미합니다.</li>
+          <li>"이용자"란 본 약관에 동의하고 서비스를 이용하는 자를 의미합니다.</li>
+          <li>"계정"이란 이용자가 서비스 이용을 위해 생성한 이메일 기반의 식별 정보를 의미합니다.</li>
+          <li>"Pro"란 광고 제거 등 부가 혜택이 제공되는 유료 이용 상태를 의미합니다.</li>
+        </ul>
 
-      <h2>제3조 (약관의 효력 및 변경)</h2>
-      <p>본 약관은 서비스를 이용하고자 하는 모든 이용자에게 적용됩니다. 운영자는 필요한 경우 약관을 변경할 수 있으며, 변경 시 앱 내 공지를 통해 사전 고지합니다. 변경된 약관은 고지 후 7일이 경과하면 효력이 발생합니다.</p>
+        <h2>제3조 (약관의 효력 및 변경)</h2>
+        <p>본 약관은 서비스를 이용하고자 하는 모든 이용자에게 적용됩니다. 운영자는 필요한 경우 약관을 변경할 수 있으며, 변경 시 앱 내 공지를 통해 사전 고지합니다. 변경된 약관은 고지 후 7일이 경과하면 효력이 발생합니다.</p>
 
-      <h2>제4조 (서비스 이용)</h2>
-      <p>서비스는 회원가입 후 이용 가능합니다.</p>
-      <ul>
-        <li>이용자는 하나의 계정만 보유함을 원칙으로 합니다.</li>
-        <li>계정 정보는 타인에게 양도하거나 대여할 수 없습니다.</li>
-        <li>본인 계정의 보안 관리는 이용자 본인의 책임입니다.</li>
-      </ul>
+        <h2>제4조 (서비스 이용)</h2>
+        <p>서비스는 회원가입 후 이용 가능합니다.</p>
+        <ul>
+          <li>이용자는 하나의 계정만 보유함을 원칙으로 합니다.</li>
+          <li>계정 정보는 타인에게 양도하거나 대여할 수 없습니다.</li>
+          <li>본인 계정의 보안 관리는 이용자 본인의 책임입니다.</li>
+        </ul>
 
-      <h2>제5조 (서비스의 제공 및 변경)</h2>
-      <p>운영자는 서비스를 연중무휴 제공하는 것을 원칙으로 하되, 아래의 경우 서비스 제공을 일시 중단할 수 있습니다.</p>
-      <ul>
-        <li>서버 점검 및 업데이트</li>
-        <li>천재지변, 정전, 통신 장애 등 불가항력적 사유</li>
-        <li>서비스 운영상 기타 부득이한 사유</li>
-      </ul>
-      <p>운영자는 서비스의 내용·기능·UI를 사전 고지 없이 변경할 수 있습니다.</p>
+        <h2>제5조 (서비스의 제공 및 변경)</h2>
+        <p>운영자는 서비스를 연중무휴 제공하는 것을 원칙으로 하되, 아래의 경우 서비스 제공을 일시 중단할 수 있습니다.</p>
+        <ul>
+          <li>서버 점검 및 업데이트</li>
+          <li>천재지변, 정전, 통신 장애 등 불가항력적 사유</li>
+          <li>서비스 운영상 기타 부득이한 사유</li>
+        </ul>
+        <p>운영자는 서비스의 내용·기능·UI를 사전 고지 없이 변경할 수 있습니다.</p>
 
-      <h2>제6조 (광고 및 유료 서비스)</h2>
-      <ul>
-        <li>서비스는 무료로 제공되며, 무료 이용자에게는 Google AdMob 광고가 표시될 수 있습니다.</li>
-        <li>Pro 결제 시 광고가 제거됩니다. 결제·환불은 Apple App Store 및 Google Play의 정책을 따릅니다.</li>
-        <li>유료 혜택의 구체적 범위는 앱 내 안내를 따르며, 운영자는 사전 고지 후 변경할 수 있습니다.</li>
-      </ul>
+        <h2>제6조 (광고 및 유료 서비스)</h2>
+        <ul>
+          <li>서비스는 무료로 제공되며, 무료 이용자에게는 Google AdMob 광고가 표시될 수 있습니다.</li>
+          <li>Pro 결제 시 광고가 제거됩니다. 결제·환불은 Apple App Store 및 Google Play의 정책을 따릅니다.</li>
+          <li>유료 혜택의 구체적 범위는 앱 내 안내를 따르며, 운영자는 사전 고지 후 변경할 수 있습니다.</li>
+        </ul>
 
-      <h2>제7조 (이용자의 의무)</h2>
-      <p>이용자는 다음 행위를 하여서는 안 됩니다.</p>
-      <ul>
-        <li>서비스를 통해 타인의 개인정보를 수집·저장·공개하는 행위</li>
-        <li>서비스 시스템을 해킹하거나 악성 코드를 배포하는 행위</li>
-        <li>허위 정보를 입력하여 다른 이용자 또는 운영자를 기만하는 행위</li>
-        <li>관련 법령을 위반하는 행위</li>
-      </ul>
+        <h2>제7조 (이용자의 의무)</h2>
+        <p>이용자는 다음 행위를 하여서는 안 됩니다.</p>
+        <ul>
+          <li>서비스를 통해 타인의 개인정보를 수집·저장·공개하는 행위</li>
+          <li>서비스 시스템을 해킹하거나 악성 코드를 배포하는 행위</li>
+          <li>허위 정보를 입력하여 다른 이용자 또는 운영자를 기만하는 행위</li>
+          <li>관련 법령을 위반하는 행위</li>
+        </ul>
 
-      <h2>제8조 (서비스 이용 제한)</h2>
-      <p>운영자는 이용자가 본 약관을 위반하거나 서비스의 정상적인 운영을 방해하는 경우, 사전 통보 없이 이용을 제한하거나 계정을 삭제할 수 있습니다.</p>
+        <h2>제8조 (서비스 이용 제한)</h2>
+        <p>운영자는 이용자가 본 약관을 위반하거나 서비스의 정상적인 운영을 방해하는 경우, 사전 통보 없이 이용을 제한하거나 계정을 삭제할 수 있습니다.</p>
 
-      <h2>제9조 (책임의 한계)</h2>
-      <p>서비스가 제공하는 운동·식단 기록, 추세 분석, 중량 진척 힌트 등은 참고용 정보이며, 의학적·영양학적 조언을 대체하지 않습니다. 이를 근거로 한 건강·운동상의 결정 및 그 결과에 대해 운영자는 책임을 지지 않습니다.</p>
-      <p>운영자는 서비스 중단, 데이터 손실 등으로 인한 손해에 대해 고의 또는 중과실이 없는 한 책임을 지지 않습니다.</p>
+        <h2>제9조 (책임의 한계)</h2>
+        <p>서비스가 제공하는 운동·식단 기록, 추세 분석, 중량 진척 힌트 등은 참고용 정보이며, 의학적·영양학적 조언을 대체하지 않습니다. 이를 근거로 한 건강·운동상의 결정 및 그 결과에 대해 운영자는 책임을 지지 않습니다.</p>
+        <p>운영자는 서비스 중단, 데이터 손실 등으로 인한 손해에 대해 고의 또는 중과실이 없는 한 책임을 지지 않습니다.</p>
 
-      <h2>제10조 (지식재산권)</h2>
-      <p>서비스 내 모든 콘텐츠(텍스트, 이미지, UI 디자인, 아이콘 등)의 저작권은 운영자에게 귀속됩니다. 이용자는 서비스 콘텐츠를 무단으로 복제·배포·수정할 수 없습니다. 단, 이용자가 직접 입력한 운동·식단 기록 등의 데이터는 이용자에게 귀속됩니다.</p>
+        <h2>제10조 (지식재산권)</h2>
+        <p>서비스 내 모든 콘텐츠(텍스트, 이미지, UI 디자인, 아이콘 등)의 저작권은 운영자에게 귀속됩니다. 이용자는 서비스 콘텐츠를 무단으로 복제·배포·수정할 수 없습니다. 단, 이용자가 직접 입력한 운동·식단 기록 등의 데이터는 이용자에게 귀속됩니다.</p>
 
-      <h2>제11조 (개인정보 보호)</h2>
-      <p>운영자는 이용자의 개인정보를 관련 법령 및 <a class="inline" href="privacy.html">개인정보처리방침</a>에 따라 처리합니다.</p>
+        <h2>제11조 (개인정보 보호)</h2>
+        <p>운영자는 이용자의 개인정보를 관련 법령 및 <a class="inline" href="privacy.html">개인정보처리방침</a>에 따라 처리합니다.</p>
 
-      <h2>제12조 (분쟁해결 및 준거법)</h2>
-      <p>서비스 이용과 관련한 분쟁은 당사자 간 협의를 우선으로 합니다. 협의가 이루어지지 않을 경우 관련 법령에 따른 관할 법원에서 해결하며, 본 약관은 대한민국 법령을 준거법으로 합니다.</p>
+        <h2>제12조 (분쟁해결 및 준거법)</h2>
+        <p>서비스 이용과 관련한 분쟁은 당사자 간 협의를 우선으로 합니다. 협의가 이루어지지 않을 경우 관련 법령에 따른 관할 법원에서 해결하며, 본 약관은 대한민국 법령을 준거법으로 합니다.</p>
 
-      <h2>제13조 (문의)</h2>
-      <p>서비스 이용과 관련한 문의: <a class="inline" href="mailto:poxy1535@gmail.com?subject=baanbok 문의">poxy1535@gmail.com</a></p>
+        <h2>제13조 (문의)</h2>
+        <p>서비스 이용과 관련한 문의: <a class="inline" href="mailto:poxy1535@gmail.com?subject=baanbok 문의">poxy1535@gmail.com</a></p>
+      </div>
 
-      <a class="back" href="index.html">← baanbok 홈으로</a>
+      <!-- English -->
+      <div data-lang-block="en">
+        <h1>Terms of Service</h1>
+        <p class="date">Effective: June 28, 2026</p>
+        <p class="legal-lead">Thank you for using Baanbok (the "Service"). These Terms govern the conditions and procedures for using the Service. By using the Service, you are deemed to have agreed to these Terms.</p>
 
-      <p class="foot-note">© 2026 baanbok · 매일은 0초로</p>
+        <hr />
+
+        <h2>Article 1 (Purpose)</h2>
+        <p>These Terms set out the conditions and procedures for using the workout & diet check app service (the "Service") provided by baanbok (the "Operator"), as well as the rights, obligations and responsibilities of the Operator and users.</p>
+
+        <h2>Article 2 (Definitions)</h2>
+        <ul>
+          <li>"Service" means the baanbok app and related web services provided by the Operator.</li>
+          <li>"User" means a person who agrees to these Terms and uses the Service.</li>
+          <li>"Account" means the email-based identifier a user creates to use the Service.</li>
+          <li>"Pro" means a paid status that provides additional benefits such as ad removal.</li>
+        </ul>
+
+        <h2>Article 3 (Effect and amendment of the Terms)</h2>
+        <p>These Terms apply to all users who wish to use the Service. The Operator may amend the Terms when necessary and will give prior notice within the app. Amended Terms take effect 7 days after such notice.</p>
+
+        <h2>Article 4 (Use of the Service)</h2>
+        <p>The Service is available after sign-up.</p>
+        <ul>
+          <li>As a rule, a user may hold only one account.</li>
+          <li>Account information may not be transferred or lent to others.</li>
+          <li>Securing your own account is your responsibility.</li>
+        </ul>
+
+        <h2>Article 5 (Provision and change of the Service)</h2>
+        <p>The Operator provides the Service year-round in principle, but may temporarily suspend it in the following cases:</p>
+        <ul>
+          <li>Server maintenance and updates</li>
+          <li>Force majeure such as natural disasters, power outages or network failures</li>
+          <li>Other unavoidable operational reasons</li>
+        </ul>
+        <p>The Operator may change the content, features and UI of the Service without prior notice.</p>
+
+        <h2>Article 6 (Ads and paid services)</h2>
+        <ul>
+          <li>The Service is provided free of charge, and free users may be shown Google AdMob ads.</li>
+          <li>Purchasing Pro removes ads. Payment and refunds follow the policies of the Apple App Store and Google Play.</li>
+          <li>The specific scope of paid benefits follows in-app guidance, and the Operator may change it after prior notice.</li>
+        </ul>
+
+        <h2>Article 7 (User obligations)</h2>
+        <p>Users must not engage in the following:</p>
+        <ul>
+          <li>Collecting, storing or disclosing others' personal data through the Service</li>
+          <li>Hacking the Service systems or distributing malicious code</li>
+          <li>Entering false information to deceive other users or the Operator</li>
+          <li>Violating applicable laws</li>
+        </ul>
+
+        <h2>Article 8 (Restriction of use)</h2>
+        <p>If a user violates these Terms or interferes with the normal operation of the Service, the Operator may restrict use or delete the account without prior notice.</p>
+
+        <h2>Article 9 (Limitation of liability)</h2>
+        <p>The workout & diet records, trend analysis and lift-progression hints provided by the Service are for reference only and do not replace medical or nutritional advice. The Operator is not liable for health or exercise decisions made on this basis or their outcomes.</p>
+        <p>The Operator is not liable for damages from service interruption, data loss and the like, absent intent or gross negligence.</p>
+
+        <h2>Article 10 (Intellectual property)</h2>
+        <p>The copyright in all content within the Service (text, images, UI design, icons, etc.) belongs to the Operator. Users may not reproduce, distribute or modify Service content without permission. However, data entered directly by a user, such as workout & diet records, belongs to that user.</p>
+
+        <h2>Article 11 (Privacy)</h2>
+        <p>The Operator processes users' personal data in accordance with applicable laws and the <a class="inline" href="privacy.html">Privacy Policy</a>.</p>
+
+        <h2>Article 12 (Dispute resolution and governing law)</h2>
+        <p>Disputes related to use of the Service are resolved by mutual agreement first. If no agreement is reached, they are resolved in the competent court under applicable law, and these Terms are governed by the laws of the Republic of Korea.</p>
+
+        <h2>Article 13 (Contact)</h2>
+        <p>Inquiries about using the Service: <a class="inline" href="mailto:poxy1535@gmail.com?subject=baanbok inquiry">poxy1535@gmail.com</a></p>
+      </div>
+
+      <a class="back" data-i18n="legal.back" href="index.html">← baanbok 홈으로</a>
+
+      <p class="foot-note" data-i18n="foot.copy">© 2026 baanbok · 매일은 0초로</p>
     </div>
 
   </div>

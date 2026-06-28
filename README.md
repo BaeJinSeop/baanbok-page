@@ -13,6 +13,7 @@
 | `terms.html` | 이용약관 — baanbok 서비스 이용 조건. 랜딩 테마 토큰·토글 재사용 |
 | `styles.css` | 리셋, 라이트/다크 테마 토큰, 임베드 화면 전용 고정 팔레트, 스토어 배지 |
 | `app.js` | 테마 토글 + 시스템 추종 (`localStorage['baanbok-theme']`, 앱 화면들과 공유하는 키) |
+| `lang.js` | 언어(한/영) 전환 엔진 + 사전 (`localStorage['baanbok-lang']`, 브라우저 언어 자동 감지). `data-i18n`/`data-i18n-html`로 텍스트 교체, `data-lang-block`으로 법률 본문 ko/en 블록 토글 |
 | `.nojekyll` | GitHub Pages가 파일을 그대로 서빙하도록 |
 
 ## 테마
