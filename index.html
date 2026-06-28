@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>baanbok · 매일은 0초로</title>
+  <meta name="description" content="baanbok — 운동·식단 체크 앱. 정해둔 계획을 매일 탭 한 번으로 체크만. 어긋나도 다그치지 않고, 한 달의 방향만 차분하게." />
+  <meta name="theme-color" content="#14B87A" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="baanbok · 매일은 0초로" />
+  <meta property="og:description" content="운동·식단 체크 앱. 매일은 0초로, 결국 추세만." />
+
+  <!-- Anti-FOUC: set theme before first paint -->
+  <script>
+    (function () {
+      try {
+        var p = localStorage.getItem('baanbok-theme') || 'system';
+        var e = (p === 'light' || p === 'dark') ? p
+          : (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', e);
+      } catch (err) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+<div class="page">
+  <div class="column">
+
+    <!-- ─── Nav (sticky) ─────────────────────────────────────────────────── -->
+    <div style="position:sticky; top:0; z-index:40; display:flex; align-items:center; justify-content:space-between; padding:16px 20px; background:var(--navBg); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--navBorder);">
+      <div style="display:flex; align-items:center; gap:9px;">
+        <div style="width:28px; height:28px; border-radius:9px; background:var(--green); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 11px -4px var(--green);">
+          <svg width="17" height="17" viewBox="0 0 120 120"><path d="M 41 92.9 A 38 38 0 1 1 79 92.9" fill="none" stroke="#fff" stroke-width="12.5" stroke-linecap="round"/><path d="M 39 73 L 53 95 L 84 58" fill="none" stroke="#fff" stroke-width="12.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span style="font-size:17px; font-weight:700; letter-spacing:-.6px; color:var(--ink);">baanbok</span>
+      </div>
+      <button class="nav-toggle" type="button" aria-label="테마 전환" onclick="toggleTheme()" style="width:36px; height:36px; border-radius:11px; border:1px solid var(--line); background:var(--card); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--ink);">
+        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"/></svg>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+
+    <!-- ─── Hero ─────────────────────────────────────────────────────────── -->
+    <div style="padding:46px 24px 8px; text-align:center;">
+      <div style="display:inline-flex; align-items:center; gap:7px; padding:6px 13px; border-radius:20px; background:var(--greenSoft); margin-bottom:22px;">
+        <span style="width:6px; height:6px; border-radius:50%; background:var(--green);"></span>
+        <span style="font-size:12.5px; font-weight:700; color:var(--green); letter-spacing:-.1px;">운동·식단 체크 앱</span>
+      </div>
+      <h1 style="font-size:42px; font-weight:800; letter-spacing:-1.8px; line-height:1.08; color:var(--ink); margin:0 0 16px; text-wrap:balance;">매일은 0초로.<br/>결국, 추세만.</h1>
+      <p style="font-size:16px; font-weight:500; line-height:1.55; color:var(--muted); margin:0 auto 26px; max-width:330px;">정해둔 계획을 매일 탭 한 번으로 체크만. 어긋나도 다그치지 않고, 방향만 보여줘요.</p>
+      <div style="display:flex; gap:10px; justify-content:center; margin-bottom:8px;">
+        <a class="store-badge" href="#download">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.05 1.68-3.03 1.75-3.08-.95-1.4-2.43-1.59-2.96-1.61-1.26-.13-2.46.74-3.1.74-.64 0-1.62-.72-2.67-.7-1.37.02-2.64.8-3.35 2.03-1.43 2.48-.37 6.15 1.02 8.16.68.98 1.49 2.08 2.55 2.04 1.02-.04 1.41-.66 2.65-.66 1.23 0 1.58.66 2.66.64 1.1-.02 1.79-1 2.46-1.99.78-1.14 1.1-2.24 1.12-2.3-.02-.01-2.15-.83-2.17-3.28zM15.1 5.96c.56-.69.94-1.63.83-2.58-.81.03-1.8.54-2.39 1.21-.52.6-.98 1.57-.86 2.49.9.07 1.83-.46 2.42-1.12z"/></svg>
+          <span style="text-align:left; line-height:1;"><span class="b-small">Download on the</span><br/><span class="b-big">App Store</span></span>
+        </a>
+        <a class="store-badge" href="#download">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M3.6 2.4c-.25.26-.4.66-.4 1.18v16.84c0 .52.15.92.4 1.18l.06.05L13.1 12.1v-.2L3.66 2.35l-.06.05z" fill="#34D399"/><path d="M16.3 15.3l-3.2-3.2v-.2l3.2-3.2.07.04 3.79 2.15c1.08.61 1.08 1.62 0 2.24l-3.79 2.15-.07.04z" fill="#FBBF24"/><path d="M16.37 15.26L13.1 12 3.6 21.6c.36.38.94.42 1.6.05l11.17-6.39z" fill="#F87171"/><path d="M16.37 8.74L5.2 2.35C4.54 1.98 3.96 2.02 3.6 2.4L13.1 12l3.27-3.26z" fill="#60A5FA"/></svg>
+          <span style="text-align:left; line-height:1;"><span class="b-small">GET IT ON</span><br/><span class="b-big">Google Play</span></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ─── Hero phone (Today preview · light) ───────────────────────────── -->
+    <div style="display:flex; justify-content:center; padding:24px 0 8px; overflow:hidden;">
+      <div style="width:280px; height:606px; position:relative;">
+        <div style="position:absolute; left:50%; top:0; transform:translateX(-50%) scale(0.718); transform-origin:top center; box-shadow:0 40px 80px -30px rgba(8,40,28,.55); border-radius:46px;">
+          <!-- TODAY SCREEN -->
+          <div class="screen screen--light" aria-hidden="true">
+            <!-- status bar -->
+            <div style="position:absolute; top:0; left:0; right:0; height:50px; z-index:30; display:flex; align-items:center; justify-content:space-between; padding:14px 30px 0; background:linear-gradient(var(--bg), var(--bg) 70%, transparent); color:var(--ink);">
+              <span style="font-size:14px; font-weight:700; letter-spacing:-.3px;">9:41</span>
+              <span style="display:flex; gap:6px; align-items:center;">
+                <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="6" width="3" height="5" rx="1"/><rect x="4.5" y="4" width="3" height="7" rx="1"/><rect x="9" y="2" width="3" height="9" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+                <svg width="24" height="12" viewBox="0 0 24 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3" fill="none" stroke="currentColor" stroke-opacity=".4"/><rect x="2.2" y="2.2" width="15" height="7.6" rx="1.6" fill="currentColor"/><rect x="21.5" y="4" width="2" height="4" rx="1" fill="currentColor" fill-opacity=".4"/></svg>
+              </span>
+            </div>
+            <div class="screen-scroll" style="padding:54px 18px 158px;">
+              <!-- brand -->
+              <div style="display:flex; align-items:center; gap:9px; margin:4px 2px 18px;">
+                <div style="width:28px; height:28px; border-radius:9px; background:var(--green); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px -4px var(--green);">
+                  <svg width="17" height="17" viewBox="0 0 120 120"><path d="M 41 92.9 A 38 38 0 1 1 79 92.9" fill="none" stroke="#fff" stroke-width="12.5" stroke-linecap="round"/><path d="M 39 73 L 53 95 L 84 58" fill="none" stroke="#fff" stroke-width="12.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span style="font-size:16px; font-weight:700; letter-spacing:-.6px; color:var(--ink);">baanbok</span>
+              </div>
+              <!-- date + progress -->
+              <div style="display:flex; align-items:flex-end; justify-content:space-between; margin:0 2px 14px;">
+                <div>
+                  <div style="font-size:12px; font-weight:600; color:var(--muted); letter-spacing:.2px; margin-bottom:3px;">6월 24일 · 수요일</div>
+                  <div style="font-size:30px; font-weight:800; letter-spacing:-1px; line-height:1; color:var(--ink);">오늘</div>
+                </div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div style="width:34px; height:34px; border-radius:11px; border:1px solid var(--line); background:var(--card); display:flex; align-items:center; justify-content:center; color:var(--ink); flex:none;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:6px; background:var(--card); border:1px solid var(--line); border-radius:11px; padding:7px 11px;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    <span style="font-size:13px; font-weight:700; color:var(--ink);">14/21</span>
+                  </div>
+                </div>
+              </div>
+              <!-- A/B toggle -->
+              <div style="display:flex; gap:8px; margin:0 2px 16px;">
+                <button type="button" style="font-size:13px; font-weight:700; border-radius:11px; padding:8px 14px; letter-spacing:-.2px; background:var(--greenSoft); color:var(--green); border:1.4px solid var(--green);">식단 A형</button>
+                <button type="button" style="font-size:13px; font-weight:700; border-radius:11px; padding:8px 14px; letter-spacing:-.2px; background:var(--card); color:var(--muted); border:1.4px solid var(--line);">B형으로</button>
+              </div>
+              <!-- DIET CARD -->
+              <div style="background:var(--card); border-radius:18px; padding:16px 16px 6px; box-shadow:var(--shadow); margin-bottom:14px;">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+                  <span style="font-size:15px; font-weight:700; letter-spacing:-.3px; color:var(--ink);">식단</span>
+                  <span style="font-size:12px; font-weight:700; color:var(--muted);">3/4</span>
+                </div>
+                <!-- 아침 (on) -->
+                <div style="border-top:1px solid var(--line2);">
+                  <div style="display:flex; align-items:center; gap:12px; padding:11px 2px;">
+                    <div style="width:23px; height:23px; border-radius:7px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--green); border:1.6px solid var(--green);">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    </div>
+                    <div style="flex:1; display:flex; align-items:center; justify-content:space-between;">
+                      <span style="font-size:15px; font-weight:600; letter-spacing:-.3px; color:var(--green);">아침</span>
+                      <span style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:12px; font-weight:600; color:var(--muted);">3/3</span>
+                        <span style="font-size:13px; color:var(--chevron);">⌄</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <!-- 점심 (on) -->
+                <div style="border-top:1px solid var(--line2);">
+                  <div style="display:flex; align-items:center; gap:12px; padding:11px 2px;">
+                    <div style="width:23px; height:23px; border-radius:7px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--green); border:1.6px solid var(--green);">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    </div>
+                    <div style="flex:1; display:flex; align-items:center; justify-content:space-between;">
+                      <span style="font-size:15px; font-weight:600; letter-spacing:-.3px; color:var(--green);">점심</span>
+                      <span style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:12px; font-weight:600; color:var(--muted);">3/3</span>
+                        <span style="font-size:13px; color:var(--chevron);">⌄</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <!-- 운동 전 간식 (on) -->
+                <div style="border-top:1px solid var(--line2);">
+                  <div style="display:flex; align-items:center; gap:12px; padding:11px 2px;">
+                    <div style="width:23px; height:23px; border-radius:7px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--green); border:1.6px solid var(--green);">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    </div>
+                    <div style="flex:1; display:flex; align-items:center; justify-content:space-between;">
+                      <span style="font-size:15px; font-weight:600; letter-spacing:-.3px; color:var(--green);">운동 전 간식</span>
+                      <span style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:12px; font-weight:600; color:var(--muted);">2/2</span>
+                        <span style="font-size:13px; color:var(--chevron);">⌄</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <!-- 저녁 (off) -->
+                <div style="border-top:1px solid var(--line2);">
+                  <div style="display:flex; align-items:center; gap:12px; padding:11px 2px;">
+                    <div style="width:23px; height:23px; border-radius:7px; flex:none; background:var(--card); border:1.6px solid var(--line);"></div>
+                    <div style="flex:1; display:flex; align-items:center; justify-content:space-between;">
+                      <span style="font-size:15px; font-weight:600; letter-spacing:-.3px; color:var(--ink);">저녁</span>
+                      <span style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:12px; font-weight:600; color:var(--muted);">0/3</span>
+                        <span style="font-size:13px; color:var(--chevron);">⌄</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <!-- macros -->
+                <div style="border-top:1px solid var(--line2); margin-top:2px; padding:14px 2px 12px;">
+                  <div style="font-size:12px; font-weight:700; color:var(--muted); margin-bottom:12px; letter-spacing:.2px;">매크로 · 체크한 항목 합산</div>
+                  <div style="display:flex; align-items:center; gap:12px; margin-bottom:11px;">
+                    <span style="width:16px; font-size:13px; font-weight:800; color:var(--green);">P</span>
+                    <div style="flex:1; height:7px; border-radius:4px; background:var(--barTrack); overflow:hidden;"><div style="width:76%; height:100%; background:var(--green); border-radius:4px;"></div></div>
+                    <span style="width:64px; text-align:right; font-size:12.5px; font-weight:700; color:var(--ink);">140/185<span style="color:var(--muted); font-weight:600;">g</span></span>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:12px; margin-bottom:11px;">
+                    <span style="width:16px; font-size:13px; font-weight:800; color:var(--yellow);">F</span>
+                    <div style="flex:1; height:7px; border-radius:4px; background:var(--barTrack); overflow:hidden;"><div style="width:74%; height:100%; background:var(--yellow); border-radius:4px;"></div></div>
+                    <span style="width:64px; text-align:right; font-size:12.5px; font-weight:700; color:var(--ink);">48/65<span style="color:var(--muted); font-weight:600;">g</span></span>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:12px; margin-bottom:11px;">
+                    <span style="width:16px; font-size:13px; font-weight:800; color:var(--macroC);">C</span>
+                    <div style="flex:1; height:7px; border-radius:4px; background:var(--barTrack); overflow:hidden;"><div style="width:73%; height:100%; background:var(--macroC); border-radius:4px;"></div></div>
+                    <span style="width:64px; text-align:right; font-size:12.5px; font-weight:700; color:var(--ink);">180/245<span style="color:var(--muted); font-weight:600;">g</span></span>
+                  </div>
+                </div>
+              </div>
+              <!-- EXERCISE CARD -->
+              <div style="background:var(--card); border-radius:18px; padding:16px 16px 8px; box-shadow:var(--shadow);">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+                  <div style="display:flex; align-items:center; gap:8px;">
+                    <span style="font-size:15px; font-weight:700; letter-spacing:-.3px; color:var(--ink);">운동</span>
+                    <span style="font-size:11px; font-weight:700; color:var(--green); background:var(--greenSoft); padding:3px 8px; border-radius:7px; letter-spacing:.2px;">어깨 데이</span>
+                  </div>
+                  <span style="font-size:12px; font-weight:700; color:var(--muted);">2/3</span>
+                </div>
+                <!-- e1 오버헤드프레스 (expanded, on) -->
+                <div style="border-top:1px solid var(--line2);">
+                  <div style="display:flex; align-items:center; gap:12px; padding:11px 2px;">
+                    <div style="width:23px; height:23px; border-radius:7px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--green); border:1.6px solid var(--green);">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    </div>
+                    <div style="flex:1; display:flex; align-items:center; justify-content:space-between;">
+                      <span style="font-size:15px; font-weight:600; letter-spacing:-.3px; color:var(--green);">오버헤드프레스</span>
+                      <span style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:12px; font-weight:600; color:var(--muted);">4/4</span>
+                        <span style="font-size:13px; color:var(--chevron); transform:rotate(180deg); display:inline-block;">⌄</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div style="padding:2px 2px 10px 35px;">
+                    <!-- set rows -->
+                    <div style="display:flex; align-items:center; gap:11px; padding:6px 0;">
+                      <div style="width:19px; height:19px; border-radius:6px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--green); border:1.6px solid var(--green);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+                      <span style="width:14px; font-size:12px; font-weight:700; color:var(--muted);">1</span>
+                      <span style="display:flex; align-items:baseline; gap:1px; background:var(--field); border-radius:7px; padding:3px 7px;"><span style="font-size:14px; font-weight:700; color:var(--ink);">20</span><span style="font-size:11px; font-weight:600; color:var(--muted);">kg</span></span>
+                      <span style="display:flex; align-items:baseline; gap:2px;"><span style="font-size:12px; font-weight:600; color:var(--chevron);">×</span><span style="font-size:14px; font-weight:700; color:var(--ink);">10</span></span>
+                      <span style="flex:1;"></span>
+                      <span style="font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:8px; border:1.2px solid var(--warmup); color:var(--warmup);">웜업</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:11px; padding:6px 0;">
+                      <div style="width:19px; height:19px; border-radius:6px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--green); border:1.6px solid var(--green);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+                      <span style="width:14px; font-size:12px; font-weight:700; color:var(--muted);">2</span>
+                      <span style="display:flex; align-items:baseline; gap:1px; background:var(--field); border-radius:7px; padding:3px 7px;"><span style="font-size:14px; font-weight:700; color:var(--ink);">40</span><span style="font-size:11px; font-weight:600; color:var(--muted);">kg</span></span>
+                      <span style="display:flex; align-items:baseline; gap:2px;"><span style="font-size:12px; font-weight:600; color:var(--chevron);">×</span><span style="font-size:14px; font-weight:700; color:var(--ink);">8</span></span>
+                      <span style="flex:1;"></span>
+                      <span style="font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:8px; border:1.2px solid var(--green); color:var(--green);">메인</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:11px; padding:6px 0;">
+                      <div style="width:19px; height:19px; border-radius:6px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--green); border:1.6px solid var(--green);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+                      <span style="width:14px; font-size:12px; font-weight:700; color:var(--muted);">3</span>
+                      <span style="display:flex; align-items:baseline; gap:1px; background:var(--field); border-radius:7px; padding:3px 7px;"><span style="font-size:14px; font-weight:700; color:var(--ink);">40</span><span style="font-size:11px; font-weight:600; color:var(--muted);">kg</span></span>
+                      <span style="display:flex; align-items:baseline; gap:2px;"><span style="font-size:12px; font-weight:600; color:var(--chevron);">×</span><span style="font-size:14px; font-weight:700; color:var(--ink);">8</span></span>
+                      <span style="flex:1;"></span>
+                      <span style="font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:8px; border:1.2px solid var(--green); color:var(--green);">메인</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:11px; padding:6px 0;">
+                      <div style="width:19px; height:19px; border-radius:6px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--green); border:1.6px solid var(--green);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+                      <span style="width:14px; font-size:12px; font-weight:700; color:var(--muted);">4</span>
+                      <span style="display:flex; align-items:baseline; gap:1px; background:var(--field); border-radius:7px; padding:3px 7px;"><span style="font-size:14px; font-weight:700; color:var(--ink);">35</span><span style="font-size:11px; font-weight:600; color:var(--muted);">kg</span></span>
+                      <span style="display:flex; align-items:baseline; gap:2px;"><span style="font-size:12px; font-weight:600; color:var(--chevron);">×</span><span style="font-size:14px; font-weight:700; color:var(--ink);">6</span></span>
+                      <span style="flex:1;"></span>
+                      <span style="font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:8px; border:1.2px solid var(--coral); color:var(--coral);">드랍</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:7px; margin-top:8px; padding-top:9px; border-top:1px dashed var(--line2);">
+                      <span style="font-size:11px; font-weight:600; color:var(--muted);">실볼륨 · 웜업 제외</span>
+                      <span style="flex:1;"></span>
+                      <span style="font-size:12.5px; font-weight:700; color:var(--ink);">3세트 · 850kg</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- e2 사이드 레터럴 (on) -->
+                <div style="border-top:1px solid var(--line2);">
+                  <div style="display:flex; align-items:center; gap:12px; padding:11px 2px;">
+                    <div style="width:23px; height:23px; border-radius:7px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--green); border:1.6px solid var(--green);">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    </div>
+                    <div style="flex:1; display:flex; align-items:center; justify-content:space-between;">
+                      <span style="font-size:15px; font-weight:600; letter-spacing:-.3px; color:var(--green);">사이드 레터럴</span>
+                      <span style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:12px; font-weight:600; color:var(--muted);">2/2</span>
+                        <span style="font-size:13px; color:var(--chevron);">⌄</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <!-- e3 인클라인 프레스 (off) -->
+                <div style="border-top:1px solid var(--line2);">
+                  <div style="display:flex; align-items:center; gap:12px; padding:11px 2px;">
+                    <div style="width:23px; height:23px; border-radius:7px; flex:none; background:var(--card); border:1.6px solid var(--line);"></div>
+                    <div style="flex:1; display:flex; align-items:center; justify-content:space-between;">
+                      <span style="font-size:15px; font-weight:600; letter-spacing:-.3px; color:var(--ink);">인클라인 프레스</span>
+                      <span style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:12px; font-weight:600; color:var(--muted);">0/4</span>
+                        <span style="font-size:13px; color:var(--chevron);">⌄</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- bottom: banner + tab bar -->
+            <div style="position:absolute; left:0; right:0; bottom:0; z-index:20;">
+              <div style="margin:0 18px 10px; height:54px; border-radius:13px; background:repeating-linear-gradient(135deg,var(--bannerA),var(--bannerA) 9px,var(--bannerB) 9px,var(--bannerB) 18px); border:1px solid var(--bannerBorder); display:flex; align-items:center; gap:11px; padding:0 13px;">
+                <span style="font-size:9px; font-weight:800; letter-spacing:1px; color:var(--muted); border:1.2px solid var(--muted); border-radius:5px; padding:2px 5px;">AD</span>
+                <span style="font-size:12px; font-weight:600; color:var(--muted);">배너 광고 · 탭 영역과 분리</span>
+              </div>
+              <div style="background:var(--tab); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border-top:1px solid var(--line2); padding:9px 16px 24px; display:flex; justify-content:space-around;">
+                <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                  <svg width="23" height="23" viewBox="0 0 120 120" fill="none" stroke="var(--green)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M 41 92.9 A 38 38 0 1 1 79 92.9"/><path d="M 39 73 L 53 95 L 84 58"/></svg>
+                  <span style="font-size:10.5px; font-weight:700; color:var(--green);">오늘</span>
+                </div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                  <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 3 6-8"/><path d="M3 21h18"/></svg>
+                  <span style="font-size:10.5px; font-weight:700; color:var(--muted);">추세</span>
+                </div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                  <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="7" rx="2"/><rect x="4" y="14" width="16" height="6" rx="2"/></svg>
+                  <span style="font-size:10.5px; font-weight:700; color:var(--muted);">템플릿</span>
+                </div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                  <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14"/><circle cx="9" cy="8" r="2.4" fill="var(--card)"/><path d="M5 16h14"/><circle cx="15" cy="16" r="2.4" fill="var(--card)"/></svg>
+                  <span style="font-size:10.5px; font-weight:700; color:var(--muted);">설정</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /TODAY SCREEN -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Features ─────────────────────────────────────────────────────── -->
+    <div style="padding:36px 20px 8px;">
+      <div style="text-align:center; margin-bottom:28px;">
+        <div style="font-size:12.5px; font-weight:800; letter-spacing:1.2px; color:var(--green); margin-bottom:10px;">왜 baanbok 인가</div>
+        <h2 style="font-size:27px; font-weight:800; letter-spacing:-1px; color:var(--ink); margin:0; line-height:1.18; text-wrap:balance;">노동은 위로,<br/>매일은 아래로</h2>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:13px;">
+        <!-- 1 -->
+        <div class="feature-card" style="display:flex; gap:15px; align-items:flex-start; background:var(--card); border:1px solid var(--line); border-radius:18px; padding:18px;">
+          <div style="width:46px; height:46px; border-radius:13px; flex:none; background:var(--greenSoft); display:flex; align-items:center; justify-content:center; color:var(--green);">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:16.5px; font-weight:700; letter-spacing:-.4px; color:var(--ink); margin-bottom:5px;">마찰 0 — 탭 한 번</div>
+            <div style="font-size:13.5px; font-weight:500; line-height:1.5; color:var(--muted);">매일 쓰는 오늘 화면은 가장 가볍게. 상위 항목을 누르면 하위까지 한 번에 체크돼요.</div>
+          </div>
+        </div>
+        <!-- 2 -->
+        <div class="feature-card" style="display:flex; gap:15px; align-items:flex-start; background:var(--card); border:1px solid var(--line); border-radius:18px; padding:18px;">
+          <div style="width:46px; height:46px; border-radius:13px; flex:none; background:var(--greenSoft); display:flex; align-items:center; justify-content:center; color:var(--green);">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4"/><path d="M3 8h14"/><path d="M17 20l4-4-4-4"/><path d="M21 16H7"/></svg>
+          </div>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:16.5px; font-weight:700; letter-spacing:-.4px; color:var(--ink); margin-bottom:5px;">어긋남이 기본</div>
+            <div style="font-size:13.5px; font-weight:500; line-height:1.5; color:var(--muted);">A형이 안 맞는 날은 B로. 옵션 교체가 예외가 아니라 메인 동작이에요.</div>
+          </div>
+        </div>
+        <!-- 3 -->
+        <div class="feature-card" style="display:flex; gap:15px; align-items:flex-start; background:var(--card); border:1px solid var(--line); border-radius:18px; padding:18px;">
+          <div style="width:46px; height:46px; border-radius:13px; flex:none; background:var(--greenSoft); display:flex; align-items:center; justify-content:center; color:var(--green);">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="5" rx="1.5"/><rect x="3" y="14" width="18" height="5" rx="1.5"/><path d="M7 7.5h2M7 16.5h2"/></svg>
+          </div>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:16.5px; font-weight:700; letter-spacing:-.4px; color:var(--ink); margin-bottom:5px;">세트까지 그대로</div>
+            <div style="font-size:13.5px; font-weight:500; line-height:1.5; color:var(--muted);">무게·횟수·태그를 세트별로. 별도 화면 없이 인라인으로 바로 수정해요.</div>
+          </div>
+        </div>
+        <!-- 4 -->
+        <div class="feature-card" style="display:flex; gap:15px; align-items:flex-start; background:var(--card); border:1px solid var(--line); border-radius:18px; padding:18px;">
+          <div style="width:46px; height:46px; border-radius:13px; flex:none; background:var(--greenSoft); display:flex; align-items:center; justify-content:center; color:var(--green);">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 3 6-8"/><path d="M3 21h18"/></svg>
+          </div>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:16.5px; font-weight:700; letter-spacing:-.4px; color:var(--ink); margin-bottom:5px;">추세만 봅니다</div>
+            <div style="font-size:13.5px; font-weight:500; line-height:1.5; color:var(--muted);">어긋나도 다그치지 않아요. 하루가 아니라 한 달의 방향만 차분하게.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Trends showcase (dark, Trends preview) ───────────────────────── -->
+    <div style="padding:40px 20px 8px;">
+      <div style="background:#0E1411; border-radius:26px; padding:34px 24px 0; overflow:hidden; position:relative;">
+        <div style="text-align:center;">
+          <div style="font-size:12px; font-weight:800; letter-spacing:1px; color:#2BD08A; margin-bottom:10px;">추세 중심</div>
+          <h3 style="font-size:25px; font-weight:800; letter-spacing:-.9px; color:#ECEFEC; margin:0 0 12px; line-height:1.2;">다그치지 않아요.<br/>추세만 봅니다</h3>
+          <p style="font-size:14px; font-weight:500; line-height:1.55; color:#8A938D; margin:0 auto 4px; max-width:300px;">목표 대비 실제 체중, 주간 달성률, 핵심 중량까지 — 하루의 어긋남이 아니라 한 달의 방향을 봅니다.</p>
+        </div>
+        <div style="display:flex; justify-content:center; margin-top:6px; height:340px; overflow:hidden;">
+          <div style="width:300px; position:relative;">
+            <div style="position:absolute; left:50%; top:0; transform:translateX(-50%) scale(0.77); transform-origin:top center; border-radius:46px 46px 0 0; box-shadow:0 -10px 60px -20px rgba(43,208,138,.25);">
+              <!-- TRENDS SCREEN -->
+              <div class="screen screen--dark" style="border-radius:46px 46px 0 0;" aria-hidden="true">
+                <div style="position:absolute; top:0; left:0; right:0; height:50px; z-index:30; display:flex; align-items:center; justify-content:space-between; padding:14px 30px 0; background:linear-gradient(var(--bg), var(--bg) 70%, transparent); color:var(--ink);">
+                  <span style="font-size:14px; font-weight:700; letter-spacing:-.3px;">9:41</span>
+                  <span style="display:flex; gap:6px; align-items:center;">
+                    <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="6" width="3" height="5" rx="1"/><rect x="4.5" y="4" width="3" height="7" rx="1"/><rect x="9" y="2" width="3" height="9" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+                    <svg width="24" height="12" viewBox="0 0 24 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3" fill="none" stroke="currentColor" stroke-opacity=".4"/><rect x="2.2" y="2.2" width="15" height="7.6" rx="1.6" fill="currentColor"/><rect x="21.5" y="4" width="2" height="4" rx="1" fill="currentColor" fill-opacity=".4"/></svg>
+                  </span>
+                </div>
+                <div class="screen-scroll" style="padding:54px 18px 110px;">
+                  <div style="display:flex; align-items:flex-end; justify-content:space-between; margin:2px 2px 4px;">
+                    <div>
+                      <div style="font-size:12px; font-weight:600; color:var(--muted); letter-spacing:.2px; margin-bottom:3px;">다그치지 않아요 · 추세만 봅니다</div>
+                      <div style="font-size:30px; font-weight:800; letter-spacing:-1px; line-height:1; color:var(--ink);">추세</div>
+                    </div>
+                    <div style="width:34px; height:34px; border-radius:11px; border:1px solid var(--line); background:var(--card); display:flex; align-items:center; justify-content:center; color:var(--ink); flex:none;">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"/></svg>
+                    </div>
+                  </div>
+                  <!-- weight chart -->
+                  <div style="background:var(--card); border-radius:18px; box-shadow:var(--shadow); padding:17px 16px 14px; margin:16px 0 14px;">
+                    <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:4px;">
+                      <div>
+                        <div style="font-size:12.5px; font-weight:700; color:var(--muted); margin-bottom:5px;">체중 · 목표 vs 실제</div>
+                        <div style="display:flex; align-items:baseline; gap:4px;">
+                          <span style="font-size:32px; font-weight:800; letter-spacing:-1px; color:var(--ink);">78.4</span>
+                          <span style="font-size:14px; font-weight:700; color:var(--muted);">kg</span>
+                        </div>
+                      </div>
+                      <div style="text-align:right;">
+                        <div style="display:inline-flex; align-items:center; gap:4px; background:var(--greenSoft); padding:5px 10px; border-radius:9px;">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M12 18V4"/></svg>
+                          <span style="font-size:12.5px; font-weight:800; color:var(--green);">-1.7</span>
+                        </div>
+                        <div style="font-size:11px; font-weight:600; color:var(--muted); margin-top:5px;">목표까지 2.4kg</div>
+                      </div>
+                    </div>
+                    <svg viewBox="0 0 340 150" style="width:100%; height:auto; display:block; margin-top:6px;" preserveAspectRatio="none">
+                      <line x1="0" y1="20" x2="340" y2="20" stroke="var(--line2)" stroke-width="1"/>
+                      <line x1="0" y1="70" x2="340" y2="70" stroke="var(--line2)" stroke-width="1"/>
+                      <line x1="0" y1="120" x2="340" y2="120" stroke="var(--line2)" stroke-width="1"/>
+                      <path d="M 0.0,130 L 0.0,33.0 L 48.6,43.5 L 97.1,47.7 L 145.7,58.3 L 194.3,54.1 L 242.9,66.7 L 291.4,64.6 L 340.0,68.8 L 340.0,130 Z" fill="var(--greenSoft)" stroke="none"/>
+                      <polyline points="0.0,35.1 48.6,47.7 97.1,58.3 145.7,70.9 194.3,83.6 242.9,96.3 291.4,106.8 340.0,119.5" fill="none" stroke="var(--muted)" stroke-width="2" stroke-dasharray="5 5" stroke-linecap="round"/>
+                      <polyline points="0.0,33.0 48.6,43.5 97.1,47.7 145.7,58.3 194.3,54.1 242.9,66.7 291.4,64.6 340.0,68.8" fill="none" stroke="var(--green)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      <circle cx="340.0" cy="68.8" r="4.5" fill="var(--green)" stroke="var(--card)" stroke-width="2.5"/>
+                    </svg>
+                    <div style="display:flex; align-items:center; justify-content:space-between; margin-top:8px;">
+                      <span style="font-size:10.5px; font-weight:600; color:var(--muted);">8주 전</span>
+                      <div style="display:flex; gap:14px;">
+                        <span style="display:flex; align-items:center; gap:5px; font-size:10.5px; font-weight:700; color:var(--muted);"><span style="width:14px; height:2.6px; border-radius:2px; background:var(--green);"></span>실제</span>
+                        <span style="display:flex; align-items:center; gap:5px; font-size:10.5px; font-weight:700; color:var(--muted);"><span style="width:14px; height:0; border-top:2px dashed var(--muted);"></span>목표</span>
+                      </div>
+                      <span style="font-size:10.5px; font-weight:600; color:var(--muted);">이번주</span>
+                    </div>
+                  </div>
+                  <!-- weekly achievement -->
+                  <div style="background:var(--card); border-radius:18px; box-shadow:var(--shadow); padding:17px 16px 16px; margin-bottom:14px;">
+                    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;">
+                      <span style="font-size:13px; font-weight:700; color:var(--ink);">주간 달성률</span>
+                      <span style="font-size:12px; font-weight:700; color:var(--muted);">평균 <span style="color:var(--green); font-weight:800;">84%</span></span>
+                    </div>
+                    <div style="display:flex; align-items:flex-end; justify-content:space-between; height:124px; gap:7px;">
+                      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:7px; height:100%; justify-content:flex-end;"><span style="font-size:9.5px; font-weight:700; color:var(--muted);">86</span><div style="width:100%; border-radius:5px 5px 3px 3px; background:rgba(43,208,138,0.45); height:62px;"></div><span style="font-size:9.5px; font-weight:600; color:var(--muted);">8주</span></div>
+                      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:7px; height:100%; justify-content:flex-end;"><span style="font-size:9.5px; font-weight:700; color:var(--muted);">71</span><div style="width:100%; border-radius:5px 5px 3px 3px; background:rgba(43,208,138,0.45); height:51px;"></div><span style="font-size:9.5px; font-weight:600; color:var(--muted);">7주</span></div>
+                      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:7px; height:100%; justify-content:flex-end;"><span style="font-size:9.5px; font-weight:700; color:var(--muted);">93</span><div style="width:100%; border-radius:5px 5px 3px 3px; background:rgba(43,208,138,0.45); height:67px;"></div><span style="font-size:9.5px; font-weight:600; color:var(--muted);">6주</span></div>
+                      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:7px; height:100%; justify-content:flex-end;"><span style="font-size:9.5px; font-weight:700; color:var(--muted);">100</span><div style="width:100%; border-radius:5px 5px 3px 3px; background:rgba(43,208,138,0.45); height:72px;"></div><span style="font-size:9.5px; font-weight:600; color:var(--muted);">5주</span></div>
+                      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:7px; height:100%; justify-content:flex-end;"><span style="font-size:9.5px; font-weight:700; color:var(--muted);">64</span><div style="width:100%; border-radius:5px 5px 3px 3px; background:rgba(43,208,138,0.45); height:46px;"></div><span style="font-size:9.5px; font-weight:600; color:var(--muted);">4주</span></div>
+                      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:7px; height:100%; justify-content:flex-end;"><span style="font-size:9.5px; font-weight:700; color:var(--muted);">88</span><div style="width:100%; border-radius:5px 5px 3px 3px; background:rgba(43,208,138,0.45); height:63px;"></div><span style="font-size:9.5px; font-weight:600; color:var(--muted);">3주</span></div>
+                      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:7px; height:100%; justify-content:flex-end;"><span style="font-size:9.5px; font-weight:700; color:var(--muted);">79</span><div style="width:100%; border-radius:5px 5px 3px 3px; background:rgba(43,208,138,0.45); height:57px;"></div><span style="font-size:9.5px; font-weight:600; color:var(--muted);">2주</span></div>
+                      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:7px; height:100%; justify-content:flex-end;"><span style="font-size:9.5px; font-weight:700; color:var(--green);">92</span><div style="width:100%; border-radius:5px 5px 3px 3px; background:var(--green); height:66px;"></div><span style="font-size:9.5px; font-weight:600; color:var(--ink);">이번주</span></div>
+                    </div>
+                  </div>
+                  <!-- stats -->
+                  <div style="display:flex; gap:12px;">
+                    <div style="flex:1; background:var(--card); border-radius:16px; box-shadow:var(--shadow); padding:15px;">
+                      <div style="font-size:11.5px; font-weight:700; color:var(--muted); margin-bottom:9px;">허리둘레</div>
+                      <div style="display:flex; align-items:baseline; gap:3px;"><span style="font-size:23px; font-weight:800; letter-spacing:-.6px; color:var(--ink);">82.0</span><span style="font-size:12px; font-weight:700; color:var(--muted);">cm</span></div>
+                      <div style="display:inline-flex; align-items:center; gap:3px; margin-top:8px; font-size:11.5px; font-weight:800; color:var(--green);"><span>▼</span><span>3.0cm</span></div>
+                    </div>
+                    <div style="flex:1; background:var(--card); border-radius:16px; box-shadow:var(--shadow); padding:15px;">
+                      <div style="font-size:11.5px; font-weight:700; color:var(--muted); margin-bottom:9px;">오버헤드프레스</div>
+                      <div style="display:flex; align-items:baseline; gap:3px;"><span style="font-size:23px; font-weight:800; letter-spacing:-.6px; color:var(--ink);">40</span><span style="font-size:12px; font-weight:700; color:var(--muted);">kg</span></div>
+                      <div style="display:inline-flex; align-items:center; gap:3px; margin-top:8px; font-size:11.5px; font-weight:800; color:var(--green);"><span>▲</span><span>5kg</span></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- tab bar -->
+                <div style="position:absolute; left:0; right:0; bottom:0; z-index:20;">
+                  <div style="background:var(--tab); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border-top:1px solid var(--line2); padding:9px 16px 24px; display:flex; justify-content:space-around;">
+                    <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                      <svg width="23" height="23" viewBox="0 0 120 120" fill="none" stroke="var(--muted)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M 41 92.9 A 38 38 0 1 1 79 92.9"/><path d="M 39 73 L 53 95 L 84 58"/></svg>
+                      <span style="font-size:10.5px; font-weight:700; color:var(--muted);">오늘</span>
+                    </div>
+                    <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                      <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 3 6-8"/><path d="M3 21h18"/></svg>
+                      <span style="font-size:10.5px; font-weight:700; color:var(--green);">추세</span>
+                    </div>
+                    <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                      <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="7" rx="2"/><rect x="4" y="14" width="16" height="6" rx="2"/></svg>
+                      <span style="font-size:10.5px; font-weight:700; color:var(--muted);">템플릿</span>
+                    </div>
+                    <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                      <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14"/><circle cx="9" cy="8" r="2.4" fill="var(--card)"/><path d="M5 16h14"/><circle cx="15" cy="16" r="2.4" fill="var(--card)"/></svg>
+                      <span style="font-size:10.5px; font-weight:700; color:var(--muted);">설정</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /TRENDS SCREEN -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Philosophy quote ─────────────────────────────────────────────── -->
+    <div style="padding:46px 28px;">
+      <div style="font-size:22px; font-weight:700; letter-spacing:-.6px; line-height:1.45; color:var(--ink); text-align:center; text-wrap:balance;">“어긋남이 <span style="color:var(--green);">기본 흐름</span>이에요.<br/>A/B 전환도, 옵션 교체도<br/>예외가 아니라 메인 동작.”</div>
+    </div>
+
+    <!-- ─── Download CTA ─────────────────────────────────────────────────── -->
+    <div id="download" style="padding:8px 20px 0;">
+      <div style="background:var(--green); border-radius:26px; padding:40px 26px; text-align:center; box-shadow:0 24px 50px -22px var(--green);">
+        <div style="width:56px; height:56px; border-radius:17px; background:rgba(255,255,255,.18); display:flex; align-items:center; justify-content:center; margin:0 auto 18px; box-shadow:0 0 0 1px rgba(255,255,255,.25) inset;">
+          <svg width="34" height="34" viewBox="0 0 120 120"><path d="M 41 92.9 A 38 38 0 1 1 79 92.9" fill="none" stroke="#fff" stroke-width="12.5" stroke-linecap="round"/><path d="M 39 73 L 53 95 L 84 58" fill="none" stroke="#fff" stroke-width="12.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 style="font-size:26px; font-weight:800; letter-spacing:-1px; color:#fff; margin:0 0 9px; line-height:1.2;">오늘부터, 0초 체크</h3>
+        <p style="font-size:14.5px; font-weight:500; color:rgba(255,255,255,.88); margin:0 auto 24px; max-width:280px; line-height:1.5;">무료로 시작하세요. 매일의 체크는 가장 가볍게.</p>
+        <div style="display:flex; gap:10px; justify-content:center;">
+          <a class="store-badge" href="#">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.05 1.68-3.03 1.75-3.08-.95-1.4-2.43-1.59-2.96-1.61-1.26-.13-2.46.74-3.1.74-.64 0-1.62-.72-2.67-.7-1.37.02-2.64.8-3.35 2.03-1.43 2.48-.37 6.15 1.02 8.16.68.98 1.49 2.08 2.55 2.04 1.02-.04 1.41-.66 2.65-.66 1.23 0 1.58.66 2.66.64 1.1-.02 1.79-1 2.46-1.99.78-1.14 1.1-2.24 1.12-2.3-.02-.01-2.15-.83-2.17-3.28zM15.1 5.96c.56-.69.94-1.63.83-2.58-.81.03-1.8.54-2.39 1.21-.52.6-.98 1.57-.86 2.49.9.07 1.83-.46 2.42-1.12z"/></svg>
+            <span style="text-align:left; line-height:1;"><span class="b-small">Download on the</span><br/><span class="b-big">App Store</span></span>
+          </a>
+          <a class="store-badge" href="#">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M3.6 2.4c-.25.26-.4.66-.4 1.18v16.84c0 .52.15.92.4 1.18l.06.05L13.1 12.1v-.2L3.66 2.35l-.06.05z" fill="#34D399"/><path d="M16.3 15.3l-3.2-3.2v-.2l3.2-3.2.07.04 3.79 2.15c1.08.61 1.08 1.62 0 2.24l-3.79 2.15-.07.04z" fill="#FBBF24"/><path d="M16.37 15.26L13.1 12 3.6 21.6c.36.38.94.42 1.6.05l11.17-6.39z" fill="#F87171"/><path d="M16.37 8.74L5.2 2.35C4.54 1.98 3.96 2.02 3.6 2.4L13.1 12l3.27-3.26z" fill="#60A5FA"/></svg>
+            <span style="text-align:left; line-height:1;"><span class="b-small">GET IT ON</span><br/><span class="b-big">Google Play</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Footer ───────────────────────────────────────────────────────── -->
+    <div style="padding:34px 24px 40px; text-align:center;">
+      <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:16px;">
+        <div style="width:22px; height:22px; border-radius:7px; background:var(--green); display:flex; align-items:center; justify-content:center;">
+          <svg width="13" height="13" viewBox="0 0 120 120"><path d="M 41 92.9 A 38 38 0 1 1 79 92.9" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="round"/><path d="M 39 73 L 53 95 L 84 58" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span style="font-size:14px; font-weight:700; letter-spacing:-.5px; color:var(--ink);">baanbok</span>
+      </div>
+      <div style="display:flex; gap:18px; justify-content:center; margin-bottom:18px;">
+        <a class="footer-link" href="/privacy" style="font-size:12.5px; font-weight:600; color:var(--muted); text-decoration:none;">개인정보</a>
+        <a class="footer-link" href="/terms" style="font-size:12.5px; font-weight:600; color:var(--muted); text-decoration:none;">이용약관</a>
+        <a class="footer-link" href="mailto:poxy1535@gmail.com?subject=baanbok 문의" style="font-size:12.5px; font-weight:600; color:var(--muted); text-decoration:none;">문의</a>
+      </div>
+      <div style="font-size:11.5px; font-weight:500; color:var(--muted); opacity:.7;">© 2026 baanbok · 매일은 0초로</div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
