@@ -12,6 +12,7 @@
 | `privacy.html` | 개인정보처리방침 — 앱의 개인정보 처리방침과 동일 내용. 랜딩 테마 토큰·토글 재사용 |
 | `terms.html` | 이용약관 — baanbok 서비스 이용 조건. 랜딩 테마 토큰·토글 재사용 |
 | `delete-account.html` | 계정 삭제 요청 — 앱 내 직접 탈퇴 경로 안내 + 앱 접근 불가 시 이메일 요청 대안. 스토어 심사 요건 충족용 |
+| `favicon.svg` | 파비콘 — 앱 아이콘과 동일한 녹색 배경(#14B87A) + 로고 SVG. 모든 페이지에 적용 |
 | `styles.css` | 리셋, 라이트/다크 테마 토큰, 임베드 화면 전용 고정 팔레트, 스토어 배지 |
 | `app.js` | 테마 토글 + 시스템 추종 (`localStorage['baanbok-theme']`, 앱 화면들과 공유하는 키) |
 | `lang.js` | 언어(한/영) 전환 엔진 + 사전 (`localStorage['baanbok-lang']`, 브라우저 언어 자동 감지). `data-i18n`/`data-i18n-html`로 텍스트 교체, `data-lang-block`으로 법률 본문 ko/en 블록 토글 |
