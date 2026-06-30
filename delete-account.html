@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko" data-title-key="delete.pageTitle">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>계정 삭제 요청 · baanbok</title>
+  <meta name="description" content="baanbok 계정 및 개인정보 삭제 요청 방법을 안내합니다." />
+  <meta name="theme-color" content="#14B87A" />
+
+  <script>
+    (function () {
+      try {
+        var p = localStorage.getItem('baanbok-theme') || 'system';
+        var e = (p === 'light' || p === 'dark') ? p
+          : (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', e);
+      } catch (err) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .legal { width: 100%; max-width: 680px; margin: 0 auto; padding: 0 24px 80px; }
+    .legal-lead { font-size: 14px; font-weight: 500; color: var(--muted); line-height: 1.7; margin: 4px 0 8px; }
+    .legal h1 { font-size: 30px; font-weight: 800; letter-spacing: -1px; color: var(--ink); margin: 36px 0 8px; }
+    .legal .date { font-size: 13px; font-weight: 600; color: var(--muted); margin: 0 0 8px; }
+    .legal hr { border: none; border-top: 1px solid var(--line); margin: 28px 0; }
+    .legal h2 { font-size: 17px; font-weight: 800; letter-spacing: -.3px; color: var(--ink); margin: 32px 0 10px; }
+    .legal p { font-size: 14px; font-weight: 500; color: var(--muted); line-height: 1.75; margin: 0 0 12px; }
+    .legal ul { font-size: 14px; font-weight: 500; color: var(--muted); line-height: 1.7; padding-left: 20px; margin: 0 0 12px; }
+    .legal li { margin-bottom: 7px; }
+    .legal a.inline { color: var(--green); text-decoration: none; font-weight: 600; }
+    .legal a.inline:hover { text-decoration: underline; }
+    .legal .foot-note { font-size: 12px; font-weight: 500; color: var(--muted); opacity: .7; margin-top: 44px; }
+    .legal .back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--muted); text-decoration: none; margin-top: 40px; }
+    .legal .back:hover { color: var(--ink); }
+
+    .step-box { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; margin: 16px 0 24px; }
+    .step-box ol { font-size: 14px; font-weight: 500; color: var(--muted); line-height: 1.75; padding-left: 20px; margin: 0; }
+    .step-box li { margin-bottom: 8px; }
+    .step-box li:last-child { margin-bottom: 0; }
+
+    .warn-box { background: color-mix(in srgb, var(--green) 8%, transparent); border: 1px solid color-mix(in srgb, var(--green) 22%, transparent); border-radius: 12px; padding: 14px 18px; margin: 0 0 20px; font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.6; }
+  </style>
+  <script src="app.js" defer></script>
+  <script src="lang.js" defer></script>
+</head>
+<body>
+<div class="page">
+  <div class="column" style="overflow:visible;">
+
+    <!-- Nav -->
+    <div style="position:sticky; top:0; z-index:40; display:flex; align-items:center; justify-content:space-between; padding:16px 20px; background:var(--navBg); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--navBorder);">
+      <a href="index.html" style="display:flex; align-items:center; gap:9px; text-decoration:none;">
+        <div style="width:28px; height:28px; border-radius:9px; background:var(--green); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 11px -4px var(--green);">
+          <svg width="17" height="17" viewBox="0 0 120 120"><path d="M 41 92.9 A 38 38 0 1 1 79 92.9" fill="none" stroke="#fff" stroke-width="12.5" stroke-linecap="round"/><path d="M 39 73 L 53 95 L 84 58" fill="none" stroke="#fff" stroke-width="12.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span style="font-size:17px; font-weight:700; letter-spacing:-.6px; color:var(--ink);">baanbok</span>
+      </a>
+      <div class="nav-actions">
+        <select class="lang-select" onchange="setLang(this.value)" aria-label="Language / 언어">
+          <option value="ko">한국어</option>
+          <option value="en">English</option>
+        </select>
+        <button class="nav-toggle" type="button" aria-label="테마 전환" onclick="toggleTheme()" style="width:36px; height:36px; border-radius:11px; border:1px solid var(--line); background:var(--card); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--ink);">
+          <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="legal">
+
+      <!-- 한국어 -->
+      <div data-lang-block="ko">
+        <h1>계정 삭제 요청</h1>
+        <p class="date">시행일: 2026년 6월 28일</p>
+        <p class="legal-lead">baanbok 계정을 삭제하면 계정 정보와 모든 운동·식단 기록·측정값이 즉시 영구 삭제되며, 복구할 수 없습니다.</p>
+
+        <hr />
+
+        <h2>1. 앱 내 직접 삭제 (권장)</h2>
+        <p>아래 경로로 직접 계정을 삭제할 수 있으며, 즉시 처리됩니다.</p>
+        <div class="step-box">
+          <ol>
+            <li>앱 하단 탭 <strong>설정</strong> 탭을 탭합니다.</li>
+            <li><strong>회원 탈퇴</strong>를 탭합니다.</li>
+            <li>안내 문구를 확인한 후 <strong>탈퇴하기</strong>를 탭합니다.</li>
+          </ol>
+        </div>
+        <div class="warn-box">삭제 후에는 계정 및 모든 데이터를 복구할 수 없습니다.</div>
+
+        <h2>2. 이메일로 삭제 요청</h2>
+        <p>앱에 접근하기 어렵거나 계정을 기억하지 못하는 경우, 아래 주소로 삭제를 요청하실 수 있습니다.</p>
+        <ul>
+          <li>이메일: <a class="inline" href="mailto:poxy1535@gmail.com?subject=baanbok 계정 삭제 요청">poxy1535@gmail.com</a></li>
+          <li>제목: <strong>baanbok 계정 삭제 요청</strong></li>
+          <li>본문에 가입 시 사용한 이메일 주소를 기재해 주세요.</li>
+        </ul>
+        <p>요청을 받은 후 영업일 기준 3일 이내에 처리하고 결과를 이메일로 안내드립니다.</p>
+
+        <h2>3. 삭제되는 데이터</h2>
+        <ul>
+          <li>계정 정보 (이메일, 이름/닉네임, 암호화된 비밀번호)</li>
+          <li>모든 운동 기록 및 템플릿</li>
+          <li>모든 식단 기록 및 템플릿</li>
+          <li>체중·허리둘레·중량 등 신체 측정값</li>
+        </ul>
+
+        <p>자세한 내용은 <a class="inline" href="privacy.html">개인정보처리방침</a>을 참고해 주세요.</p>
+      </div>
+
+      <!-- English -->
+      <div data-lang-block="en">
+        <h1>Account Deletion Request</h1>
+        <p class="date">Effective: June 28, 2026</p>
+        <p class="legal-lead">Deleting your baanbok account permanently removes your account information and all workout, diet records and measurements immediately. This action cannot be undone.</p>
+
+        <hr />
+
+        <h2>1. Delete directly in the app (recommended)</h2>
+        <p>You can delete your account directly through the app — it takes effect immediately.</p>
+        <div class="step-box">
+          <ol>
+            <li>Tap the <strong>Settings</strong> tab at the bottom of the app.</li>
+            <li>Tap <strong>Delete Account</strong>.</li>
+            <li>Review the confirmation message and tap <strong>Delete</strong>.</li>
+          </ol>
+        </div>
+        <div class="warn-box">Once deleted, your account and all data cannot be recovered.</div>
+
+        <h2>2. Request deletion by email</h2>
+        <p>If you can't access the app or don't remember your account, you can submit a deletion request by email.</p>
+        <ul>
+          <li>Email: <a class="inline" href="mailto:poxy1535@gmail.com?subject=baanbok account deletion request">poxy1535@gmail.com</a></li>
+          <li>Subject: <strong>baanbok account deletion request</strong></li>
+          <li>Include the email address associated with your account in the message body.</li>
+        </ul>
+        <p>We will process your request within 3 business days and notify you by email once complete.</p>
+
+        <h2>3. Data that will be deleted</h2>
+        <ul>
+          <li>Account information (email, name / nickname, encrypted password)</li>
+          <li>All workout records and templates</li>
+          <li>All diet records and templates</li>
+          <li>Body metrics (weight, waist, lifts)</li>
+        </ul>
+
+        <p>For more details, please see our <a class="inline" href="privacy.html">Privacy Policy</a>.</p>
+      </div>
+
+      <a class="back" data-i18n="legal.back" href="index.html">← baanbok 홈으로</a>
+
+      <p class="foot-note" data-i18n="foot.copy">© 2026 baanbok · 매일은 0초로</p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

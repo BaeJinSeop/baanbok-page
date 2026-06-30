@@ -93,6 +93,8 @@
       'legal.back': '← baanbok 홈으로',
       'legal.privacyTitle': '개인정보처리방침 · baanbok',
       'legal.termsTitle': '이용약관 · baanbok',
+      'legal.deleteTitle': '계정 삭제 요청 · baanbok',
+      'foot.delete': '계정 삭제',
     },
 
     en: {
@@ -173,6 +175,8 @@
       'legal.back': '← Back to baanbok',
       'legal.privacyTitle': 'Privacy Policy · baanbok',
       'legal.termsTitle': 'Terms of Service · baanbok',
+      'legal.deleteTitle': 'Account Deletion · baanbok',
+      'foot.delete': 'Delete Account',
     },
   };
 
