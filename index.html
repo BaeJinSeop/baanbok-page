@@ -71,10 +71,14 @@
           <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.05 1.68-3.03 1.75-3.08-.95-1.4-2.43-1.59-2.96-1.61-1.26-.13-2.46.74-3.1.74-.64 0-1.62-.72-2.67-.7-1.37.02-2.64.8-3.35 2.03-1.43 2.48-.37 6.15 1.02 8.16.68.98 1.49 2.08 2.55 2.04 1.02-.04 1.41-.66 2.65-.66 1.23 0 1.58.66 2.66.64 1.1-.02 1.79-1 2.46-1.99.78-1.14 1.1-2.24 1.12-2.3-.02-.01-2.15-.83-2.17-3.28zM15.1 5.96c.56-.69.94-1.63.83-2.58-.81.03-1.8.54-2.39 1.21-.52.6-.98 1.57-.86 2.49.9.07 1.83-.46 2.42-1.12z"/></svg>
           <span style="text-align:left; line-height:1;"><span class="b-small">Download on the</span><br/><span class="b-big">App Store</span></span>
         </a>
-        <a class="store-badge" href="#download">
+        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.nundeongyi.baanbok" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24"><path d="M3.6 2.4c-.25.26-.4.66-.4 1.18v16.84c0 .52.15.92.4 1.18l.06.05L13.1 12.1v-.2L3.66 2.35l-.06.05z" fill="#34D399"/><path d="M16.3 15.3l-3.2-3.2v-.2l3.2-3.2.07.04 3.79 2.15c1.08.61 1.08 1.62 0 2.24l-3.79 2.15-.07.04z" fill="#FBBF24"/><path d="M16.37 15.26L13.1 12 3.6 21.6c.36.38.94.42 1.6.05l11.17-6.39z" fill="#F87171"/><path d="M16.37 8.74L5.2 2.35C4.54 1.98 3.96 2.02 3.6 2.4L13.1 12l3.27-3.26z" fill="#60A5FA"/></svg>
           <span style="text-align:left; line-height:1;"><span class="b-small">GET IT ON</span><br/><span class="b-big">Google Play</span></span>
         </a>
+      </div>
+      <div style="display:inline-flex; align-items:center; gap:7px; margin-top:14px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.8"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4M12 2.8c2.6 2.5 3.9 5.6 3.9 9.2s-1.3 6.7-3.9 9.2c-2.6-2.5-3.9-5.6-3.9-9.2s1.3-6.7 3.9-9.2z"/></svg>
+        <span style="font-size:12px; font-weight:600; color:var(--muted); letter-spacing:-.1px;">한국어 · English · 日本語 · 中文 · Español</span>
       </div>
     </div>
 
@@ -115,6 +119,11 @@
                     <span style="font-size:13px; font-weight:700; color:var(--ink);">14/21</span>
                   </div>
                 </div>
+              </div>
+              <!-- flow strip (어제의 흐름 — P24) -->
+              <div style="display:flex; align-items:center; gap:8px; background:var(--greenSoft); border-radius:12px; padding:9px 12px; margin:0 2px 12px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round"><path d="M2 12c2.5-4 5-4 7.5 0s5 4 7.5 0 3.5-3 5-1"/></svg>
+                <span data-i18n="app.flow" style="font-size:12px; font-weight:700; letter-spacing:-.2px; color:var(--green);">어제의 흐름보다 앞서 있어요</span>
               </div>
               <!-- A/B toggle -->
               <div style="display:flex; gap:8px; margin:0 2px 16px;">
@@ -376,6 +385,51 @@
       </div>
     </div>
 
+    <!-- ─── Flow showcase (어제의 흐름 — P24 전략 코어) ─────────────────────── -->
+    <div style="padding:46px 24px 8px;">
+      <div style="text-align:center; margin-bottom:26px;">
+        <div data-i18n="flow.eyebrow" style="font-size:12.5px; font-weight:800; letter-spacing:1.2px; color:var(--green); margin-bottom:10px;">어제의 흐름</div>
+        <h2 data-i18n-html="flow.h2" style="font-size:27px; font-weight:800; letter-spacing:-1px; color:var(--ink); margin:0 0 12px; line-height:1.18; text-wrap:balance;">어제의 나와,<br/>나란히 갑니다</h2>
+        <p data-i18n="flow.p" style="font-size:14px; font-weight:500; line-height:1.55; color:var(--muted); margin:0 auto; max-width:320px;">어제 체크한 시각이 오늘의 페이스메이커가 돼요. 앞서 있을 때만 알려주고, 뒤처진 날은 조용히 — 오늘은 오늘 페이스로.</p>
+      </div>
+
+      <!-- flow mockup stack — 스트립 · 흐름 알림 · 휴식 타이머(내 리듬) -->
+      <div style="max-width:340px; margin:0 auto; display:flex; flex-direction:column; gap:12px;">
+        <!-- ① 흐름 스트립 -->
+        <div style="display:flex; align-items:center; gap:9px; background:var(--greenSoft); border-radius:14px; padding:13px 15px; box-shadow:var(--shadow);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round"><path d="M2 12c2.5-4 5-4 7.5 0s5 4 7.5 0 3.5-3 5-1"/></svg>
+          <span data-i18n="flow.strip" style="font-size:13.5px; font-weight:700; letter-spacing:-.2px; color:var(--green);">어제의 흐름은 08:10에 시작했어요</span>
+        </div>
+        <!-- ② 흐름 알림 (iOS 배너 스타일) -->
+        <div style="display:flex; gap:11px; align-items:flex-start; background:var(--card); border:1px solid var(--line2); border-radius:16px; padding:13px 15px; box-shadow:var(--shadow);">
+          <div style="width:34px; height:34px; border-radius:9px; background:var(--green); display:flex; align-items:center; justify-content:center; flex:none;">
+            <svg width="19" height="19" viewBox="0 0 120 120"><path d="M 41 92.9 A 38 38 0 1 1 79 92.9" fill="none" stroke="#fff" stroke-width="12.5" stroke-linecap="round"/><path d="M 39 73 L 53 95 L 84 58" fill="none" stroke="#fff" stroke-width="12.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="flex:1; min-width:0;">
+            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:8px;">
+              <span data-i18n="flow.notifTitle" style="font-size:13px; font-weight:800; letter-spacing:-.3px; color:var(--ink);">나의 흐름</span>
+              <span data-i18n="flow.notifTime" style="font-size:11px; font-weight:600; color:var(--muted);">지금</span>
+            </div>
+            <div data-i18n="flow.notifBody" style="font-size:12.5px; font-weight:500; line-height:1.45; color:var(--muted); margin-top:2px;">지난주 이맘때 '스쿼트' 운동을 시작했어요 · 오늘은 오늘 페이스로 가도 괜찮아요</div>
+          </div>
+        </div>
+        <!-- ③ 휴식 타이머 바 (내 리듬 개인화) -->
+        <div style="background:var(--card); border-radius:16px; padding:13px 15px; box-shadow:var(--shadow);">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:9px;">
+            <span style="display:flex; align-items:center; gap:7px;">
+              <span data-i18n="flow.rest" style="font-size:13px; font-weight:700; letter-spacing:-.2px; color:var(--ink);">휴식</span>
+              <span data-i18n="flow.myPace" style="font-size:10.5px; font-weight:700; color:var(--green); background:var(--greenSoft); padding:2.5px 7px; border-radius:7px;">내 리듬</span>
+            </span>
+            <span style="font-size:15px; font-weight:800; letter-spacing:-.3px; color:var(--ink); font-variant-numeric:tabular-nums;">1:24</span>
+          </div>
+          <div style="height:5px; border-radius:3px; background:var(--line2); overflow:hidden;">
+            <div style="width:62%; height:100%; border-radius:3px; background:var(--green);"></div>
+          </div>
+          <div data-i18n="flow.restHint" style="font-size:11px; font-weight:600; color:var(--muted); margin-top:8px;">5초 전부터 소리로 알려줘요 · 백그라운드에서도 흘러요</div>
+        </div>
+      </div>
+    </div>
+
     <!-- ─── Trends showcase (dark, Trends preview) ───────────────────────── -->
     <div style="padding:40px 20px 8px;">
       <div style="background:#0E1411; border-radius:26px; padding:34px 24px 0; overflow:hidden; position:relative;">
@@ -502,6 +556,45 @@
       </div>
     </div>
 
+    <!-- ─── More features (1.7 — 미니 그리드) ─────────────────────────────── -->
+    <div style="padding:46px 20px 8px;">
+      <div style="text-align:center; margin-bottom:22px;">
+        <h2 data-i18n-html="more.h2" style="font-size:24px; font-weight:800; letter-spacing:-.9px; color:var(--ink); margin:0; line-height:1.2; text-wrap:balance;">그리고, 조용히<br/>챙겨주는 것들</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <div style="background:var(--card); border-radius:16px; padding:15px 14px; box-shadow:var(--shadow);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:8px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <div data-i18n="more.1.t" style="font-size:14px; font-weight:700; letter-spacing:-.3px; color:var(--ink); margin-bottom:4px;">운동 사전 105종</div>
+          <div data-i18n="more.1.b" style="font-size:12px; font-weight:500; line-height:1.45; color:var(--muted);">장비·부위로 찾고, 설명은 5개 언어. 대체 운동도 같은 부위로 바로.</div>
+        </div>
+        <div style="background:var(--card); border-radius:16px; padding:15px 14px; box-shadow:var(--shadow);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:8px;"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <div data-i18n="more.2.t" style="font-size:14px; font-weight:700; letter-spacing:-.3px; color:var(--ink); margin-bottom:4px;">오늘의 펄스</div>
+          <div data-i18n="more.2.b" style="font-size:12px; font-weight:500; line-height:1.45; color:var(--muted);">지금 함께 체크 중인 사람들. 합계만 보여요 — 개인 기록은 비공개.</div>
+        </div>
+        <div style="background:var(--card); border-radius:16px; padding:15px 14px; box-shadow:var(--shadow);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:8px;"><path d="M12 2.5C12 2.5 5.5 10.3 5.5 15a6.5 6.5 0 0 0 13 0C18.5 10.3 12 2.5 12 2.5z"/></svg>
+          <div data-i18n="more.3.t" style="font-size:14px; font-weight:700; letter-spacing:-.3px; color:var(--ink); margin-bottom:4px;">물 마시기</div>
+          <div data-i18n="more.3.b" style="font-size:12px; font-weight:500; line-height:1.45; color:var(--muted);">물방울 여덟 개, 탭으로 채우기. 여기도 입력이 아니라 체크.</div>
+        </div>
+        <div style="background:var(--card); border-radius:16px; padding:15px 14px; box-shadow:var(--shadow);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:8px;"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>
+          <div data-i18n="more.4.t" style="font-size:14px; font-weight:700; letter-spacing:-.3px; color:var(--ink); margin-bottom:4px;">템플릿 공유 코드</div>
+          <div data-i18n="more.4.b" style="font-size:12px; font-weight:500; line-height:1.45; color:var(--muted);">6자리 코드로 내 루틴을 친구에게. 받으면 내 것으로 복사돼요.</div>
+        </div>
+        <div style="background:var(--card); border-radius:16px; padding:15px 14px; box-shadow:var(--shadow);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:8px;"><path d="M1 1l22 22" opacity="0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="19.5" r="1.2" fill="var(--green)" stroke="none"/></svg>
+          <div data-i18n="more.5.t" style="font-size:14px; font-weight:700; letter-spacing:-.3px; color:var(--ink); margin-bottom:4px;">지하 헬스장에서도</div>
+          <div data-i18n="more.5.b" style="font-size:12px; font-weight:500; line-height:1.45; color:var(--muted);">신호가 없어도 체크는 그대로. 연결되면 알아서 저장돼요.</div>
+        </div>
+        <div style="background:var(--card); border-radius:16px; padding:15px 14px; box-shadow:var(--shadow);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:8px;"><circle cx="12" cy="8" r="4"/><path d="M4.5 21c1.2-3.6 4-5.5 7.5-5.5s6.3 1.9 7.5 5.5"/></svg>
+          <div data-i18n="more.6.t" style="font-size:14px; font-weight:700; letter-spacing:-.3px; color:var(--ink); margin-bottom:4px;">가입 없이 시작</div>
+          <div data-i18n="more.6.b" style="font-size:12px; font-weight:500; line-height:1.45; color:var(--muted);">먼저 써보고, 마음에 들면 그때 계정으로. 기록은 그대로 이어져요.</div>
+        </div>
+      </div>
+    </div>
+
     <!-- ─── Philosophy quote ─────────────────────────────────────────────── -->
     <div style="padding:46px 28px;">
       <div data-i18n-html="quote" style="font-size:22px; font-weight:700; letter-spacing:-.6px; line-height:1.45; color:var(--ink); text-align:center; text-wrap:balance;">“어긋남이 <span style="color:var(--green);">기본 흐름</span>이에요.<br/>A/B 전환도, 옵션 교체도<br/>예외가 아니라 메인 동작.”</div>
@@ -520,7 +613,7 @@
             <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.05 1.68-3.03 1.75-3.08-.95-1.4-2.43-1.59-2.96-1.61-1.26-.13-2.46.74-3.1.74-.64 0-1.62-.72-2.67-.7-1.37.02-2.64.8-3.35 2.03-1.43 2.48-.37 6.15 1.02 8.16.68.98 1.49 2.08 2.55 2.04 1.02-.04 1.41-.66 2.65-.66 1.23 0 1.58.66 2.66.64 1.1-.02 1.79-1 2.46-1.99.78-1.14 1.1-2.24 1.12-2.3-.02-.01-2.15-.83-2.17-3.28zM15.1 5.96c.56-.69.94-1.63.83-2.58-.81.03-1.8.54-2.39 1.21-.52.6-.98 1.57-.86 2.49.9.07 1.83-.46 2.42-1.12z"/></svg>
             <span style="text-align:left; line-height:1;"><span class="b-small">Download on the</span><br/><span class="b-big">App Store</span></span>
           </a>
-          <a class="store-badge" href="#">
+          <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.nundeongyi.baanbok" target="_blank" rel="noopener">
             <svg width="18" height="18" viewBox="0 0 24 24"><path d="M3.6 2.4c-.25.26-.4.66-.4 1.18v16.84c0 .52.15.92.4 1.18l.06.05L13.1 12.1v-.2L3.66 2.35l-.06.05z" fill="#34D399"/><path d="M16.3 15.3l-3.2-3.2v-.2l3.2-3.2.07.04 3.79 2.15c1.08.61 1.08 1.62 0 2.24l-3.79 2.15-.07.04z" fill="#FBBF24"/><path d="M16.37 15.26L13.1 12 3.6 21.6c.36.38.94.42 1.6.05l11.17-6.39z" fill="#F87171"/><path d="M16.37 8.74L5.2 2.35C4.54 1.98 3.96 2.02 3.6 2.4L13.1 12l3.27-3.26z" fill="#60A5FA"/></svg>
             <span style="text-align:left; line-height:1;"><span class="b-small">GET IT ON</span><br/><span class="b-big">Google Play</span></span>
           </a>
