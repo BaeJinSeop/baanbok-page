@@ -15,7 +15,7 @@
 | `favicon.svg` | 파비콘 — 앱 아이콘과 동일한 녹색 배경(#14B87A) + 로고 SVG. 모든 페이지에 적용 |
 | `styles.css` | 리셋, 라이트/다크 테마 토큰, 임베드 화면 전용 고정 팔레트, 스토어 배지 |
 | `app.js` | 테마 토글 + 시스템 추종 (`localStorage['baanbok-theme']`, 앱 화면들과 공유하는 키) |
-| `lang.js` | 언어(한/영) 전환 엔진 + 사전 (`localStorage['baanbok-lang']`, 브라우저 언어 자동 감지). `data-i18n`/`data-i18n-html`로 텍스트 교체, `data-lang-block`으로 법률 본문 ko/en 블록 토글 |
+| `lang.js` | 언어 전환 엔진 + 사전 5종(ko·en·ja·zh·es — 앱 언어팩과 용어 통일, `localStorage['baanbok-lang']`, 브라우저 언어 자동 감지·미지원=en). `data-i18n`/`data-i18n-html`로 텍스트 교체, `data-lang-block`은 법률 본문 ko/en 원문만 존재 — ja/zh/es에선 en 블록 폴백 |
 | `.nojekyll` | GitHub Pages가 파일을 그대로 서빙하도록 |
 
 ## 테마
@@ -43,7 +43,7 @@ python3 -m http.server 8000
 
 - ~~스토어 배지의 `href="#"`를 실제 App Store / Google Play URL로 교체.~~ ✅ 양대 스토어 실링크 연결 완료(2026-07-09, Android 첫 출시 반영).
 - 폰 목업을 실제 스크린샷 PNG로 교체 가능(현재는 충실히 재현한 정적 HTML).
-- 랜딩 전체 ja/zh/es 현지화(현재 한/영 — 히어로에 5개 언어 지원 표기만). 앱 스토어 리스팅 현지화와 함께 검토.
+- ~~랜딩 전체 ja/zh/es 현지화~~ ✅ 완료(2026-07-09) — 사전 5종 97키 동수. 법률 본문(privacy/terms/delete)의 ja/zh/es 원문 번역은 남음(현재 en 폴백).
 
 ---
 
