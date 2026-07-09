@@ -234,7 +234,7 @@
     },
 
     // 앱 언어팩(1.7.0)과 용어 통일: 흐름=流れ/节奏/ritmo, 펄스=パルス/脉搏/Pulso, 태그=앱 사전 그대로.
-    // 법률 본문(data-lang-block)은 ko/en만 존재 — ja/zh/es에선 en 블록으로 폴백(apply 참조).
+    // 법률 본문(data-lang-block)은 5개 언어 원문 존재(2026-07-09). 미보유 언어는 en 폴백(apply 참조).
     ja: {
       'meta.title': 'baanbok · 毎日は0秒で',
 
@@ -589,8 +589,8 @@
       var k2 = els[i].getAttribute('data-i18n-html');
       if (d[k2] != null) els[i].innerHTML = d[k2];
     }
-    // 법률 본문 블록은 ko/en 원문만 존재 — ja/zh/es는 en 블록으로 폴백
-    var blockLang = (lang === 'ko' || lang === 'en') ? lang : 'en';
+    // 법률 본문 블록 — 5개 언어 원문(2026-07-09 ja/zh/es 추가). 해당 언어 블록이 없으면 en 폴백
+    var blockLang = document.querySelector('[data-lang-block="' + lang + '"]') ? lang : 'en';
     els = document.querySelectorAll('[data-lang-block]');
     for (i = 0; i < els.length; i++) {
       els[i].style.display = (els[i].getAttribute('data-lang-block') === blockLang) ? '' : 'none';
