@@ -77,29 +77,31 @@
       <!-- 한국어 -->
       <div data-lang-block="ko">
         <h1>개인정보처리방침</h1>
-        <p class="date">시행일: 2026년 6월 28일</p>
+        <p class="date">시행일: 2026년 7월 13일</p>
         <p class="legal-lead">Baanbok(이하 "서비스")은 이용자의 개인정보를 소중히 다루며, 「개인정보 보호법」 및 관계 법령을 준수합니다. 아래와 같이 개인정보 처리방침을 둡니다.</p>
 
         <hr />
 
         <h2>1. 수집하는 개인정보 항목</h2>
         <ul>
-          <li>회원가입·로그인: 이메일 주소, 이름(닉네임), 비밀번호(암호화 저장)</li>
+          <li>회원가입·로그인: 이메일 주소, 이름(닉네임), 비밀번호(암호화 저장), 계정 생성·회원가입 일시</li>
           <li>서비스 이용: 운동·식단 기록, 체크 내역, 신체 측정값(체중·허리둘레·중량)</li>
-          <li>자동 수집: 광고 식별자, 앱 이용 중 발생하는 기기 정보</li>
+          <li>자동 수집: 광고 식별자, Firebase Analytics가 수집하는 기기·앱 정보 및 가명 앱 이용 이벤트(화면 조회, 로그인·가입, 템플릿 생성·가져오기·적용, 하루 완료)</li>
+          <li>이메일·이름·운동/식단 내용·메모·신체 측정값은 Analytics 이벤트로 전송하지 않습니다.</li>
         </ul>
 
         <h2>2. 개인정보의 수집·이용 목적</h2>
         <ul>
           <li>회원 식별 및 로그인 인증</li>
           <li>운동·식단 체크 및 추세 기록 제공</li>
-          <li>서비스 운영·개선 및 문의 응대</li>
+          <li>서비스 이용 현황 분석, 운영·개선 및 문의 응대</li>
           <li>무료 이용자 대상 광고 게재</li>
         </ul>
 
         <h2>3. 보유 및 이용 기간</h2>
         <ul>
-          <li>회원 탈퇴 시 모든 개인정보를 지체 없이 파기합니다.</li>
+          <li>계정 및 서비스 데이터는 회원 탈퇴 시 지체 없이 파기합니다.</li>
+          <li>계정과 연결하지 않은 Firebase Analytics 가명 이벤트 수준 데이터는 최대 2개월 보관 후 월별 삭제 절차에 따라 삭제됩니다. 개인을 식별하지 않는 표준 집계 보고서는 더 오래 유지될 수 있습니다.</li>
           <li>관계 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관합니다.</li>
         </ul>
 
@@ -110,6 +112,7 @@
         <p>서비스는 원칙적으로 개인정보를 외부에 제공하지 않으며, 다음 업무를 위탁합니다.</p>
         <ul>
           <li>Google AdMob(구글): 광고 게재 및 광고 식별자 처리</li>
+          <li>Google Analytics for Firebase(구글): 앱 이용 통계 분석</li>
           <li>Amazon Web Services(AWS): 서버·데이터 호스팅</li>
         </ul>
 
@@ -117,6 +120,7 @@
         <ul>
           <li>무료 이용자에게 Google AdMob 광고가 표시되며, 맞춤형 광고를 위해 광고 식별자가 사용될 수 있습니다.</li>
           <li>기기 설정에서 광고 추적을 제한할 수 있습니다.</li>
+          <li>iOS용 Analytics SDK는 IDFA 지원 없이 구성됩니다. iOS·Android 모두 Analytics의 광고 저장·광고 사용자 데이터·맞춤 광고 활용을 비활성화합니다.</li>
           <li>Pro 이용자에게는 광고가 표시되지 않습니다.</li>
         </ul>
 
@@ -141,29 +145,31 @@
       <!-- English -->
       <div data-lang-block="en">
         <h1>Privacy Policy</h1>
-        <p class="date">Effective: June 28, 2026</p>
+        <p class="date">Effective: July 13, 2026</p>
         <p class="legal-lead">Baanbok (the "Service") values your privacy and complies with applicable data-protection laws. This Privacy Policy is set out below.</p>
 
         <hr />
 
         <h2>1. Personal data we collect</h2>
         <ul>
-          <li>Sign-up / login: email address, name (nickname), password (stored encrypted)</li>
+          <li>Sign-up / login: email address, name (nickname), password (stored encrypted), account creation and registration timestamps</li>
           <li>Service use: workout & diet records, check history, body metrics (weight, waist, lifts)</li>
-          <li>Collected automatically: advertising identifier, device information generated during app use</li>
+          <li>Collected automatically: advertising identifier, device/app information collected by Firebase Analytics, and pseudonymous usage events (screen views, login/sign-up, template creation/import/application, daily completion)</li>
+          <li>Email, name, workout/diet content, notes, and body measurements are not sent as Analytics events.</li>
         </ul>
 
         <h2>2. Purpose of collection and use</h2>
         <ul>
           <li>Member identification and login authentication</li>
           <li>Providing workout & diet checks and trend records</li>
-          <li>Operating and improving the service, and responding to inquiries</li>
+          <li>Analyzing service usage, operating and improving the service, and responding to inquiries</li>
           <li>Serving ads to free users</li>
         </ul>
 
         <h2>3. Retention and use period</h2>
         <ul>
-          <li>All personal data is destroyed without delay upon account deletion.</li>
+          <li>Account and service data is destroyed without delay upon account deletion.</li>
+          <li>Pseudonymous Firebase Analytics event-level data is not linked to your account and is retained for up to 2 months before deletion through the monthly deletion process. Standard aggregated reports that do not identify individuals may be retained longer.</li>
           <li>Where retention is required by law, data is kept for the period required.</li>
         </ul>
 
@@ -174,6 +180,7 @@
         <p>As a rule, the Service does not provide personal data to outside parties. It entrusts the following tasks:</p>
         <ul>
           <li>Google AdMob (Google): ad delivery and advertising-identifier processing</li>
+          <li>Google Analytics for Firebase (Google): app usage analytics</li>
           <li>Amazon Web Services (AWS): server and data hosting</li>
         </ul>
 
@@ -181,6 +188,7 @@
         <ul>
           <li>Free users are shown Google AdMob ads, and an advertising identifier may be used for personalized ads.</li>
           <li>You can limit ad tracking in your device settings.</li>
+          <li>The iOS Analytics SDK is built without IDFA support. On both iOS and Android, Analytics ad storage, ad user data, and personalized advertising use are disabled.</li>
           <li>Pro users are not shown ads.</li>
         </ul>
 
@@ -206,29 +214,31 @@
       <!-- 日本語 -->
       <div data-lang-block="ja">
         <h1>プライバシーポリシー</h1>
-        <p class="date">施行日: 2026年6月28日</p>
+        <p class="date">施行日: 2026年7月13日</p>
         <p class="legal-lead">Baanbok(以下「本サービス」)は、利用者の個人情報を大切に扱い、適用されるデータ保護法令を遵守します。プライバシーポリシーを以下のとおり定めます。</p>
 
         <hr />
 
         <h2>1. 収集する個人情報</h2>
         <ul>
-          <li>会員登録・ログイン: メールアドレス、名前(ニックネーム)、パスワード(暗号化して保存)</li>
+          <li>会員登録・ログイン: メールアドレス、名前(ニックネーム)、パスワード(暗号化して保存)、アカウント作成・会員登録日時</li>
           <li>サービス利用: 運動・食事の記録、チェック履歴、身体測定値(体重・ウエスト・重量)</li>
-          <li>自動収集: 広告識別子、アプリ利用中に発生する端末情報</li>
+          <li>自動収集: 広告識別子、Firebase Analyticsが収集する端末・アプリ情報、仮名化された利用イベント(画面表示、ログイン・登録、テンプレート作成・インポート・適用、1日の完了)</li>
+          <li>メール、名前、運動・食事内容、メモ、身体測定値はAnalyticsイベントとして送信しません。</li>
         </ul>
 
         <h2>2. 収集・利用の目的</h2>
         <ul>
           <li>会員の識別およびログイン認証</li>
           <li>運動・食事のチェックおよび傾向記録の提供</li>
-          <li>サービスの運営・改善および問い合わせ対応</li>
+          <li>サービス利用状況の分析、運営・改善および問い合わせ対応</li>
           <li>無料利用者への広告配信</li>
         </ul>
 
         <h2>3. 保有および利用期間</h2>
         <ul>
-          <li>退会時にすべての個人情報を遅滞なく破棄します。</li>
+          <li>アカウントおよびサービスデータは、退会時に遅滞なく破棄します。</li>
+          <li>アカウントに紐付けないFirebase Analyticsの仮名化イベントレベルデータは、最長2か月保管された後、毎月の削除処理により削除されます。個人を識別しない標準の集計レポートは、より長く保持される場合があります。</li>
           <li>法令により保存が必要な場合は、当該期間保管します。</li>
         </ul>
 
@@ -239,6 +249,7 @@
         <p>本サービスは原則として個人情報を外部に提供せず、次の業務を委託します。</p>
         <ul>
           <li>Google AdMob(Google): 広告配信および広告識別子の処理</li>
+          <li>Google Analytics for Firebase(Google): アプリ利用統計の分析</li>
           <li>Amazon Web Services(AWS): サーバー・データのホスティング</li>
         </ul>
 
@@ -246,6 +257,7 @@
         <ul>
           <li>無料利用者にはGoogle AdMobの広告が表示され、パーソナライズ広告のために広告識別子が使用されることがあります。</li>
           <li>端末の設定で広告トラッキングを制限できます。</li>
+          <li>iOS版Analytics SDKはIDFAサポートなしで構成されます。iOS・AndroidともにAnalyticsの広告ストレージ、広告ユーザーデータ、パーソナライズ広告利用は無効です。</li>
           <li>Pro利用者には広告は表示されません。</li>
         </ul>
 
@@ -270,29 +282,31 @@
       <!-- 简体中文 -->
       <div data-lang-block="zh">
         <h1>隐私政策</h1>
-        <p class="date">生效日期: 2026年6月28日</p>
+        <p class="date">生效日期: 2026年7月13日</p>
         <p class="legal-lead">Baanbok(以下称"本服务")重视用户的个人信息,并遵守适用的数据保护法律法规。隐私政策如下。</p>
 
         <hr />
 
         <h2>1. 收集的个人信息</h2>
         <ul>
-          <li>注册·登录: 电子邮箱、姓名(昵称)、密码(加密存储)</li>
+          <li>注册·登录: 电子邮箱、姓名(昵称)、密码(加密存储)、账号创建与注册时间</li>
           <li>服务使用: 训练·饮食记录、打卡历史、身体测量值(体重·腰围·重量)</li>
-          <li>自动收集: 广告标识符、应用使用过程中产生的设备信息</li>
+          <li>自动收集: 广告标识符、Firebase Analytics收集的设备与应用信息,以及假名化使用事件(页面浏览、登录·注册、模板创建·导入·应用、每日完成)</li>
+          <li>电子邮件、姓名、运动/饮食内容、备注和身体测量值不会作为Analytics事件发送。</li>
         </ul>
 
         <h2>2. 收集和使用目的</h2>
         <ul>
           <li>会员识别及登录认证</li>
           <li>提供训练·饮食打卡及趋势记录</li>
-          <li>服务运营·改进及咨询处理</li>
+          <li>分析服务使用情况、服务运营·改进及咨询处理</li>
           <li>向免费用户投放广告</li>
         </ul>
 
         <h2>3. 保存及使用期限</h2>
         <ul>
-          <li>注销账号时,将立即销毁所有个人信息。</li>
+          <li>账号及服务数据将在注销账号时立即销毁。</li>
+          <li>不与账号关联的Firebase Analytics假名化事件级数据最长保存2个月,之后按月度删除流程删除。不识别个人的标准汇总报告可能会保存更长时间。</li>
           <li>法律要求保存的,在相应期限内保管。</li>
         </ul>
 
@@ -303,6 +317,7 @@
         <p>本服务原则上不向外部提供个人信息,并委托以下业务。</p>
         <ul>
           <li>Google AdMob(谷歌): 广告投放及广告标识符处理</li>
+          <li>Google Analytics for Firebase(谷歌): 应用使用统计分析</li>
           <li>Amazon Web Services(AWS): 服务器·数据托管</li>
         </ul>
 
@@ -310,6 +325,7 @@
         <ul>
           <li>免费用户会看到Google AdMob广告,为提供个性化广告可能使用广告标识符。</li>
           <li>可在设备设置中限制广告跟踪。</li>
+          <li>iOS版Analytics SDK不包含IDFA支持。iOS和Android均禁用Analytics的广告存储、广告用户数据及个性化广告用途。</li>
           <li>Pro用户不显示广告。</li>
         </ul>
 
@@ -334,29 +350,31 @@
       <!-- Español -->
       <div data-lang-block="es">
         <h1>Política de Privacidad</h1>
-        <p class="date">Vigente desde: 28 de junio de 2026</p>
+        <p class="date">Vigente desde: 13 de julio de 2026</p>
         <p class="legal-lead">Baanbok (el "Servicio") valora tu privacidad y cumple la normativa de protección de datos aplicable. La presente Política de Privacidad se establece a continuación.</p>
 
         <hr />
 
         <h2>1. Datos personales que recopilamos</h2>
         <ul>
-          <li>Registro / inicio de sesión: dirección de correo, nombre (apodo), contraseña (almacenada cifrada)</li>
+          <li>Registro / inicio de sesión: dirección de correo, nombre (apodo), contraseña (almacenada cifrada) y fechas de creación y registro de la cuenta</li>
           <li>Uso del servicio: registros de entrenamiento y dieta, historial de marcas, medidas corporales (peso, cintura, cargas)</li>
-          <li>Recopilación automática: identificador de publicidad e información del dispositivo generada durante el uso</li>
+          <li>Recopilación automática: identificador de publicidad, información del dispositivo y la app recopilada por Firebase Analytics y eventos de uso seudónimos (vistas de pantalla, inicio de sesión/registro, creación/importación/aplicación de plantillas y finalización diaria)</li>
+          <li>El correo, nombre, contenido de ejercicio/dieta, notas y medidas corporales no se envían como eventos de Analytics.</li>
         </ul>
 
         <h2>2. Finalidad de la recopilación y el uso</h2>
         <ul>
           <li>Identificación del usuario y autenticación de inicio de sesión</li>
           <li>Provisión de marcas de entrenamiento y dieta y registros de tendencias</li>
-          <li>Operación y mejora del servicio, y atención de consultas</li>
+          <li>Análisis del uso, operación y mejora del servicio, atención de consultas</li>
           <li>Publicidad para usuarios gratuitos</li>
         </ul>
 
         <h2>3. Plazo de conservación y uso</h2>
         <ul>
-          <li>Al eliminar la cuenta, todos los datos personales se destruyen sin demora.</li>
+          <li>Los datos de la cuenta y del servicio se destruyen sin demora al eliminar la cuenta.</li>
+          <li>Los datos de eventos seudonimizados de Firebase Analytics no se vinculan con tu cuenta y se conservan hasta 2 meses antes de eliminarse mediante el proceso mensual. Los informes agregados estándar que no identifican a personas pueden conservarse durante más tiempo.</li>
           <li>Cuando la ley exija su conservación, se guardarán durante el plazo requerido.</li>
         </ul>
 
@@ -367,6 +385,7 @@
         <p>Como regla general, el Servicio no cede datos personales a terceros. Encarga las siguientes tareas:</p>
         <ul>
           <li>Google AdMob (Google): entrega de anuncios y tratamiento del identificador de publicidad</li>
+          <li>Google Analytics for Firebase (Google): análisis de uso de la app</li>
           <li>Amazon Web Services (AWS): alojamiento de servidores y datos</li>
         </ul>
 
@@ -374,6 +393,7 @@
         <ul>
           <li>Los usuarios gratuitos ven anuncios de Google AdMob y puede usarse un identificador de publicidad para anuncios personalizados.</li>
           <li>Puedes limitar el seguimiento publicitario en los ajustes del dispositivo.</li>
+          <li>El SDK de Analytics para iOS se compila sin IDFA. Tanto en iOS como en Android se desactivan el almacenamiento publicitario, los datos de usuario publicitarios y el uso para publicidad personalizada de Analytics.</li>
           <li>Los usuarios Pro no ven anuncios.</li>
         </ul>
 
